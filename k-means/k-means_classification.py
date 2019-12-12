@@ -19,10 +19,10 @@ def inputNumber(message):
        break 
 
 
-k = inputNumber('How much masks do you want? (2-8): ')
+k = inputNumber('How much masks do you want?: ')
 
 # read
-img = cv2.imread('Screenshot_9.png')
+img = cv2.imread('example.png')
 img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
 
 image_2d = img.reshape((img.shape[0] * img.shape[1], 3))
