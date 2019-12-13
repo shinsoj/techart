@@ -24,7 +24,6 @@ print('Working...')
 img = cv2.imread('example.png')
 
 image_2d = img.reshape((img.shape[0] * img.shape[1], 3))
-img_r = (img / 255.0).reshape(-1, 3)
 
 # supplying the number of clusters we wish to generate
 # kmeans_cluster = KMeans(n_clusters=k) # this is slower but more accurate
