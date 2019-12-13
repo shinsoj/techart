@@ -4,9 +4,6 @@ from sklearn.cluster import KMeans
 from sklearn.cluster import MiniBatchKMeans
 import cv2
 
-# set the number of masks
-# k = 3
-
 def inputNumber(message):
   while True:
     try:
@@ -20,6 +17,8 @@ def inputNumber(message):
 
 
 k = inputNumber('How much masks do you want?: ')
+b = inputNumber('Blur strength: ')
+print('Working...')
 
 # read
 img = cv2.imread('example.png')
@@ -39,14 +38,13 @@ result = cluster_centers[cluster_labels]
 result = np.reshape(result, (img.shape))
 cv2.imwrite('colormap.png', result)
 
-indexed = img.copy()
-
 # create masks and classification map
+indexed = img.copy()
 for i in range(k):
 	sample = cluster_centers[i]
 
 	mask = cv2.inRange(result, sample, sample)
-	blur = cv2.GaussianBlur(mask, (3, 3), 0)
+	blur = cv2.GaussianBlur(mask, (b, b), 0)
 
 	cv2.imwrite(f'mask{i}.png', blur)
 
