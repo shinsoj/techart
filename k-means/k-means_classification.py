@@ -5,15 +5,15 @@ from sklearn.cluster import MiniBatchKMeans
 import cv2
 
 def inputNumber(message):
-  while True:
-    try:
-       userInput = int(input(message))       
-    except ValueError:
-       print("Not an integer! Try again.")
-       continue
-    else:
-       return userInput 
-       break 
+	while True:
+		try:
+			userInput = int(input(message))
+		except ValueError:
+			print("Not an integer! Try again.")
+			continue
+		else:
+			return userInput
+			break
 
 
 k = inputNumber('How much masks do you want?: ')
@@ -43,9 +43,13 @@ for i in range(k):
 	sample = cluster_centers[i]
 
 	mask = cv2.inRange(result, sample, sample)
-	blur = cv2.GaussianBlur(mask, (b, b), 0)
 
-	cv2.imwrite(f'mask{i}.png', blur)
+	if b != 0:
+		if b % b != 0:
+			b += 1
+		mask = cv2.GaussianBlur(mask, (b, b), 0)
+
+	cv2.imwrite(f'mask{i}.png', mask)
 
 	indexed[mask>0] = (i, i, i)
 
