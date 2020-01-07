@@ -21,7 +21,7 @@ b = inputNumber('Blur strength: ')
 print('Working...')
 
 # read
-img = cv2.imread('example.png')
+img = cv2.imread('input.png')
 
 image_2d = img.reshape((img.shape[0] * img.shape[1], 3))
 

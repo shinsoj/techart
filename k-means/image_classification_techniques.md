@@ -23,17 +23,9 @@ Links to data:
 
 The **land covers** are created using the methods described above.
 
-In Global Mapper you can find them in *Select online Data Source - Land Cover*
+## Creating masks the fast way (option 1)
 
-## Creating masks the fast way
-
-Say, you have a picture:
-
-![example](https://github.com/shinsoj/techart/blob/master/k-means/example.png)
-
-And you need some masks generated out of it, to put textures on the terrain.
-
-Here's my script that does this very simply and fast way: **[k-means_classification.py](https://github.com/shinsoj/techart/blob/master/k-means/k-means_classification.py)**
+Here's my script that creates masks very simply and fast way: **[k-means_classification.py](https://github.com/shinsoj/techart/blob/master/k-means/k-means_classification.py)**
 
 To run it you need to install Python (with checkbox **Add Python to PATH**)
 and then install libraries, just running this with cmd:
@@ -42,9 +34,16 @@ and then install libraries, just running this with cmd:
 python -m pip install numpy matplotlib opencv-python sklearn
 ```
 
+It's input is *input.png*, output includes:
+* colormap.png
+* index_map.png, where each tone = number of the mask
+* mask[0...n].png
+
+![example](https://github.com/shinsoj/techart/blob/master/k-means/img/img1.png)
+
 If you need supervised methods with more control and precision, you can use QGis with some plugins or try ENVI or ArcGis.
 
-## Using QGis with Orfeo
+## Using QGis with Orfeo (option 2)
 
 ### Installing QGis and Orfeo toolbox
 
@@ -65,4 +64,3 @@ C:\Users\%USERPROFILE%\AppData\Roaming\QGIS\QGIS3\profiles\default\python\plugin
 1. Run `OTB > KMeansClassification`
 1. Choose *Input image*, *Number of classes* and *Output image*
 1. Press `Run` and after some time you can see the index map, it's already saved to the folder you've chosen.
-
