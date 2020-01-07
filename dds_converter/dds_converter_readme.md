@@ -1,14 +1,17 @@
 # nvDXT
-It's included in **Nvidia DDS** utilities 
 
-* reads .tga, .bmp, .gif, .ppm, .jpg, .tif, .cel, .dds, .png, .psd, .rgb, *.bw and .rgba
+It's included in **Nvidia DDS** utilities, you can download it [here](https://developer.nvidia.com/legacy-texture-tools)
+
+* reads .tga, .bmp, .gif, .ppm, .jpg, .tif, .cel, .dds, .png, .psd, .rgb, .bw and .rgba
 * compresses images
 * writes out .dds file
 * filters MIP maps
 * does batch processing
 * It also can read a profile created from the Photoshop plugin
 
-Here's an [example code](https://github.com/shinsoj/tools/blob/master/dds_converter.cmd), it converts TGA found in the current folder into DDS. You need to put this file and nvdxt.exe into your TGA's folder.
+## batch converter
+
+Here's a batch [script](https://github.com/shinsoj/tools/blob/master/dds_converter.cmd), it converts TGA found in the current folder into DDS. You need to put this file and nvdxt.exe into your TGA's folder.
 
 ## nvDXT parameters
 You can view the full list of options by running a cmd file (from the folder with nvdxt in it) with this code:
