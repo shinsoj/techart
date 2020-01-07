@@ -39,7 +39,7 @@ It's input is *input.png*, output includes:
 * index_map.png, where each tone = number of the mask
 * mask[0...n].png
 
-![example](https://github.com/shinsoj/techart/blob/master/k-means/img/img1.png)
+![example](https://github.com/shinsoj/techart/blob/master/k-means/img/img1.jpg)
 
 If you need supervised methods with more control and precision, you can use QGis with some plugins or try ENVI or ArcGis.
 
