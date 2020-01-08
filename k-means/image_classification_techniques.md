@@ -1,14 +1,25 @@
 # Creating masks with image classification techniques
 
-## Intro
+## What is image classification
 
-**Wiki** quote:
-> **Remote sensing** is the acquisition of information about an object or phenomenon without making physical contact with the object. [[1](https://en.wikipedia.org/wiki/Remote_sensing)]
+It's an approach to set classes (like forest, field, water, etc) to pixels, making a map of areas of different types. In the case of gamedevelopment, we can use it to create masks for textures for a terrain.
 
-Some info:
+There are three techiques:
+* unsupervised
+* supervised
+* object-based
+
+### Unsupervised image classification
+
+This one is the most basic one, it clusters pixels and sets classes to them. Ome of the common clustering methods is [K-Means](https://en.wikipedia.org/wiki/K-means_clustering). You identify the number of clusters you wish to generate and alorithm does the work.
+
+### Useful links
+
+If you want to learn more about this theme, you can start with these links. 
 
 * [Image Classification Techniques in Remote Sensing](http://gisgeography.com/image-classification-techniques-remote-sensing/) 
 * [Image Classification](https://earth.esa.int/landtraining09/D2L2_Caetano_Classification_Techniques.pdf) - presentation with methodics
+* [Supervised and Unsupervised Classification in Remote Sensing](https://gisgeography.com/supervised-unsupervised-classification-arcgis/)
 * [Remote sensing applications](https://en.wikipedia.org/wiki/Remote_sensing_application) 
 
 From proprietary software ENVI is comfy to work with, but there's also a free option - **QGis** with plugins.
@@ -20,12 +31,13 @@ Links to data:
 * http://gisgeography.com/best-free-gis-data-sources-raster-vector/ - gis data, raster, vector
 * http://gisgeography.com/free-global-land-cover-land-use-data/ - land cover, land use
 
-
-The **land covers** are created using the methods described above.
+The **[land covers](https://en.wikipedia.org/wiki/Land_cover)** are created using the methods described above.
 
 ## Creating masks the fast way (option 1)
 
 Here's my script that creates masks very simply and fast way: **[k-means_classification.py](https://github.com/shinsoj/techart/blob/master/k-means/k-means_classification.py)**
+
+It uses unsupervised K-Means method to create masks out of the satellite image.
 
 To run it you need to install Python (with checkbox **Add Python to PATH**)
 and then install libraries, just running this with cmd:
