@@ -9,7 +9,7 @@ def inputNumber(message):
 		try:
 			userInput = int(input(message))
 		except ValueError:
-			print("Not an integer! Try again.")
+			print("Not an integer! Please type an int.")
 			continue
 		else:
 			return userInput
@@ -45,7 +45,7 @@ for i in range(k):
 	mask = cv2.inRange(result, sample, sample)
 
 	if b != 0:
-		if b % b != 0:
+		if not b % 2 != 0:
 			b += 1
 		mask = cv2.GaussianBlur(mask, (b, b), 0)
 
