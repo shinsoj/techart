@@ -32,6 +32,7 @@ Links to data:
 * http://gisgeography.com/free-global-land-cover-land-use-data/ - land cover, land use
 
 The **[land covers](https://en.wikipedia.org/wiki/Land_cover)** are created using the methods described above.
+* [9 Free Global Land Cover / Land Use Data Sets](https://gisgeography.com/free-global-land-cover-land-use-data/)
 
 ## Creating masks the fast way (option 1)
 
