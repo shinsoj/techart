@@ -11,7 +11,7 @@ It's included in **Nvidia DDS** utilities, you can download it [here](https://de
 
 ## batch converter
 
-Here's a batch [script](https://github.com/shinsoj/tools/blob/master/dds_converter.cmd), it converts TGA found in the current folder into DDS. You need to put this file and nvdxt.exe into your TGA's folder.
+Here's a batch [script](https://github.com/shinsoj/techart/blob/master/dds_converter/dds_converter.cmd), it converts TGA found in the current folder into DDS. You need to put this file and **nvdxt.exe** into your TGA's folder.
 
 ## nvDXT parameters
 You can view the full list of options by running a cmd file (from the folder with nvdxt in it) with this code:
