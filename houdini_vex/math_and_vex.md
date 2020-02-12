@@ -12,7 +12,7 @@ VEX basics
 - [Vex Attributes vs Variables](https://houdinitricks.com/vex-attributes-vs-variables/)
 - [Few gotchas when writing vex](https://houdinitricks.com/few-gotchas-when-writing-vex/)
 
-Attributes have @ before the name. Each statement must end with a semicolon (;). To get the attribute, type:
+Attributes have `@` before the name. Each statement must end with a semicolon `;`. To get the attribute, type:
 
 ```csharp
 @Cd = @N; //  Cd for color and N for normal
@@ -26,7 +26,7 @@ To define your own attribute it works the same:
 @my_attribute = 1;
 ```
 
-The attribute by default is `float`. For other types, write the appropriate prefix:
+The attribute by default is `float`. For the other types, write the appropriate prefix:
 
 ```csharp
 v@vector_attribute = {1,2,3}; // curly braces for numbers
@@ -48,23 +48,28 @@ v@vector_attribute = set(N.x,0,1);
 ```
 
 Defining __variable__:
+
+```ruby
+matrix3 my_matrix = ident();
 ```
-matrix3 my_matrix = ident(); // create identity matrix, variable
-```
+
+Defined variables are used furter in the code without `@` prefix.
+
 
 ### Wrangle UI Controls
 
 - SideFX Documentation about [Spare Parameters](https://www.sidefx.com/docs/houdini/network/spare.html).
 
-```Ruby
+```ruby
 @scale_control = ch('scale');
 ```
 
-In "Edit parameter interface" you can set the paramentera as you need, for example if you set the vector attribute:
+In "Edit parameter interface" you can set the paramenter as you need, for example if you set the vector attribute:
 
-```Ruby
+```ruby
 v@my_color = chv('color_sampler');
 ```
+
 Then go to parameter interface, choose your parameter, change Type to Color and Show Color as "RGB Sliders"
 
 
@@ -72,9 +77,7 @@ Then go to parameter interface, choose your parameter, change Type to Color and 
 Vectors
 ------
 
-- Good video on [Vectors](https://www.youtube.com/watch?v=tnDqwcNG20Y)
-
-Vectors do not have position, showing relative differences between things, magnitude and direction:
+Good video about [Vectors](https://www.youtube.com/watch?v=tnDqwcNG20Y)
 
 - __Magnitude__ is the length of the vector.
 - __Direction__ is which way the vector is pointing.
@@ -91,7 +94,7 @@ Addition of vectors is like chaining them tip to tail. The result then is a vect
 
 This gives us a __tangent__ vector:
 
-```r
+```ruby
 v@tangent_vector = (normalize(normalize(point(0, "P" , @ptnum + 1) - point(0, "P" , @ptnum)) + normalize(point(0, "P" , @ptnum) - point(0, "P" , @ptnum - 1))));
 
 @N = v@tangent_vector;
@@ -112,14 +115,14 @@ C = A - B
 
 We can set __normals along curve__ with that:
 
-```r
+```ruby
 v@along_curve = normalize(point(0, "P" , @ptnum + 1) - point(0, "P" , @ptnum));
 @N = v@along_curve;
 ```
 
 If a curve is not closed, you can fix the _last point direction_ by inverting the vector towards the previous point:
 
-```r
+```ruby
 if (@ptnum != npoints(0)-1)
     @N = normalize(point(0, "P" , @ptnum + 1) - point(0, "P" , @ptnum));
 else
@@ -136,14 +139,15 @@ a[x y z] = [ax ay az]
 2[1 3 0] = [2 6 0]
 ```
 
-Vector __magnitude__:
+Vector __magnitude__ (length):
 
 ```
-||v|| = sqrt(square(vx) + square(vy) + square(vz))
+||v|| = sqrt(square(v.x) + square(v.y) + square(v.z))
 ```
 
 In vex:
-```r
+
+```ruby
 @magnitude = length(@myVector);
 ```
 
@@ -153,7 +157,7 @@ Dividind a vector by it's lenght is __normalizing__ a vector. The resulting vect
 unit v = v / ||v||
 ```
 
-```r
+```ruby
 @myVector = normalize(@someVector);
 ```
 
@@ -170,9 +174,9 @@ a ⋅ b = [a1 a2 a3] ⋅ [b1 b2 b3] = a1b1 + a2b2 + a3b3
 a ⋅ (b + c) = a ⋅ b + a ⋅ c
 ```
 
-* The result of the dot product is negative if the vectors point in a direction greater than pi/2 radians (90 degrees).
-* If the dot product is zero the two vectors are orthogonal (_perpendicular_)
-* If the vectors are unit length and the result of the dot product is 1, the vectors are equal.
+* `A • B = 1` when the unit vectors are _parallel_
+* `A • B = -1` when the unit vectors point in _opposite direction_
+* `A • B = 0` when the unit vectors are orthogonal (_perpendicular_)
 
 With the dot product you can find the __angle between two vectors__:
 
@@ -188,6 +192,15 @@ v@unit_b = normalize(point(0, "P" , @ptnum + 1) - point(0, "P" , @ptnum));
 
 @angle = degrees(acos(dot(v@unit_a, v@unit_b)));
 ```
+
+With the dot product we also can find out _if some point is in the field of view_, for example. Say, we have a camera at point A(1, 3) looking in the B(1, 1) direction with 180 degrees fov, and we have some point P(3, 2):
+
+```
+V = P - A = (2, -1)
+B • V = 1
+```
+
+So, the point P is in the field of view of A, because 1 > 0.
 
 __Back-face detection__ is simply the dot product of the surface normal against incoming light (both normalized):
 
@@ -231,12 +244,6 @@ v@up_vector = normalize(cross(v@along_curve, v@tangent_vector));
 
 @N = cross(v@up_vector, v@tangent_vector);
 ```
-
-
-
-
-
-
 
 
 ### Visualizers
