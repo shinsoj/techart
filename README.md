@@ -1,4 +1,4 @@
-* [Houdini](https://github.com/shinsoj/techart/wiki/Houdini-Basics)
+* [Houdini](https://github.com/shinsoj/techart/blob/master/houdini_vex/math_and_vex.md)
 * [Substance Designer](https://github.com/shinsoj/tools/wiki/Substance-Designer)
     * [Intro to functions](https://github.com/shinsoj/tools/wiki/Substance-Designer-Functions)
     * [Pixel Processor](https://github.com/shinsoj/techart/wiki/Pixel-processor)
