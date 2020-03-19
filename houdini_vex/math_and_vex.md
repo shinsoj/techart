@@ -151,7 +151,7 @@ In vex:
 @magnitude = length(@myVector);
 ```
 
-Dividind a vector by it's lenght is __normalizing__ a vector. The resulting vector will have a _length of 1_, which calls a __unit vector__ (unit vector = vector / magnitude):
+Dividing a vector by it's lenght is __normalizing__ a vector. The resulting vector will have a _length of 1_, which calls a __unit vector__ (unit vector = vector / magnitude):
 
 ```
 unit v = v / ||v||
@@ -163,15 +163,15 @@ unit v = v / ||v||
 
 ### Dot product (scalar product)
 
-Dot product produces a scalar value.
+Dot product produces a _scalar value_.
 
 ```
-a ⋅ b = [a1 a2 a3] ⋅ [b1 b2 b3] = a1b1 + a2b2 + a3b3
+a • b = [a1 a2 a3] • [b1 b2 b3] = a1b1 + a2b2 + a3b3
 
-[2 1 5] ⋅ [0 3 2] = 0 + 3 + 10 = 13
+[2 1 5] • [0 3 2] = 0 + 3 + 10 = 13
 ```
 ```
-a ⋅ (b + c) = a ⋅ b + a ⋅ c
+a • (b + c) = a ⋅ b + a ⋅ c
 ```
 
 * `A • B = 1` when the unit vectors are _parallel_
@@ -205,7 +205,7 @@ So, the point P is in the field of view of A, because 1 > 0.
 __Back-face detection__ is simply the dot product of the surface normal against incoming light (both normalized):
 
 ```
-N ⋅ L = (N.x ⋅ L.x) + (N.y ⋅ L.y) + (N.z ⋅ L.z)
+N • L = (N.x ⋅ L.x) + (N.y ⋅ L.y) + (N.z ⋅ L.z)
 ```
 
 
@@ -233,7 +233,7 @@ v@tangent_vector = (normalize(normalize(point(0, "P" , @ptnum + 1) - point(0, "P
 @N = normalize(cross(v@along_curve, v@tangent_vector));
 ```
 
-We may now get the perpendicular vector to the tangent and up vectors, this one will always point outside the spline. You can build a spiral staircase with that, for example.
+We may now find the perpendicular vector to the tangent and up vectors.
 
 ```ruby
 v@along_curve = normalize(point(0, "P" , @ptnum + 1) - point(0, "P" , @ptnum));
@@ -248,7 +248,7 @@ v@up_vector = normalize(cross(v@along_curve, v@tangent_vector));
 
 ### Visualizers
 
-To visualize our vectors, RMB on Vizualizers > press on the plus (+) icon in Scene group, choose Marker and set it's style to `Vector` and attribute as your attribute name, in our case there are `tangent_vector` and `up_vector`, you can see kind of individual coordinate guides at each point now:
+To visualize our vectors, RMB on Vizualizers > press on the plus (+) icon in Scene group, choose Marker and set it's style to `Vector` and attribute as your attribute name, in our case there are `tangent_vector` and `up_vector`.
 
 
 
