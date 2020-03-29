@@ -11,5 +11,5 @@
     * Raster maps vectorization
     * [Image classification](https://github.com/shinsoj/techart/blob/master/k-means/image_classification_techniques.md)
 * Technical Information
-    * [Optimization](https://www.artstation.com/shinsoj/blog/VoZK/optimization-for-the-artists) (Artstation)
+    * [Optimization](https://github.com/shinsoj/techart/blob/master/optimization/optimization.md)
     * [Albedo chart](https://github.com/shinsoj/techart/blob/master/albedo_chart/albedo_chart.md)
