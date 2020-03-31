@@ -3,6 +3,7 @@ Gathered from all over the web, attached links to the original texts. It's still
 
 __Objective__: give the artists a knowledge on what’s going on, how they can make a big impact on a game’s performance and why some things are done one way, not the other.
 
+### Learn More
 
 * [The Witcher 3: Optimizing Content Pipelines for Open-World Games](https://www.youtube.com/watch?v=p8CMYD_5gE8) - __GDC 2015 talk__
 
@@ -13,6 +14,8 @@ __Optimization__ is the process of maximizing of profitable characteristics, and
 The optimization problem is formulated if the __technological requirements__ are specified. 
 
 Optimization process is quite simple. Start by looking at the whole system, run a __benchmark__, find a bottleneck, __detect__ where resourses are being used, __solve__ this, then __check__ if it was an improvement and __repeat__ the process.
+
+### Learn More
 
 * [Unreal Engine 4 Optimization Tutorial](https://software.intel.com/en-us/articles/unreal-engine-4-optimization-tutorial-part-1)
 
@@ -29,8 +32,10 @@ Intel GPA [guide](https://software.intel.com/en-us/articles/practical-game-perfo
 [Identify Basic GPU/CPU Bound Scenarios](https://software.intel.com/en-us/gpa-cookbook-identify-basic-gpu-cpu-bound-scenarios)
 
 
-## FPS vs MS
+# FPS vs MS
+
 ### Frames per second (FPS)
+
 One of the most common benchmarks used in measuring the graphics performance of a video game is the [frame rate](https://en.wikipedia.org/wiki/Frame_rate) or frames per second. 
 
 > FPS is the number of times the image on the screen is refreshed each second.
@@ -42,6 +47,7 @@ Having 60fps target, you have 16.67ms limit for all your processing.
 The actual cost of features is a period of time, not a number of frames. 
 
 ### Milliseconds per frame (ms)
+
 The inverse of the frames per second (FPS) gives us the seconds per frame (SPF); there are 1000 milliseconds in a second.
 ```
 1000/fps = ms/frame
@@ -60,8 +66,9 @@ While the frames per second increase, the number of milliseconds decreases at a 
 
 __Example__: we have a scene running at 35fps, let's say we want to use [HBAO+ Ultra](http://developer.download.nvidia.com/gameworks/events/GDC2016/atatarinov_alpanteleev_advanced_ao.pdf) that takes 4.8ms `1000/35 = 28.57ms`, then we add HBAO `28.57 + 4.8 = 33.37ms` or `30fps`.
 
+### Learn More
 
-Here's an [article](http://renderingpipeline.com/2013/02/fps-vs-msecframe/) on the topic for further reading.
+* [FPS vs MS](http://renderingpipeline.com/2013/02/fps-vs-msecframe/)
 
 ## How do we influence this
 
@@ -71,53 +78,57 @@ __FPS drops are caused by CPU and GPU taking longer time to process the frames._
 * GPU is often limited by _fillrate_ or memory _bandwidth_. Typical problems are lighting, dynamic shadows or translucency.
 
 ### Polycount & LODs
+
 A Level of Detail model ([LOD](http://wiki.polycount.com/wiki/LOD)) is a lower-resolution version of a game model. 
 
-LOD0 is the original mesh, the higher the LOD the fewer vertices to be processed. This leads to big performance improvements by **reducing the cost on the CPU and GPU vertex processing**.
+LOD0 is the original mesh, the higher the LOD the fewer vertices to be processed. This leads to big performance improvements by __reducing the cost on the CPU and GPU vertex processing__.
 
 GDC [presentation](https://www.gdcvault.com/play/1017873/LOD-Techniques-for-Boosting-Rendering) from Simplygon about LODs and how they affect overshading.
 
-
 General advises:
 
-* Watch the number of vertices and faces of the models, check for the **polycount limits**. Reduce tris and remove polys of the model which are never visible.
-* Make sure that all of the models have **LODs** (Except the very simple ones like blocks). Look for your models LODs distances, for example you may have the model on such a distance where it's already 100px small on the screen but still is in LOD0 with 10k tris.
+* Watch the number of vertices and faces of the models, check for the __polycount limits__. Reduce tris and remove polys of the model which are never visible.
+* Make sure that all of the models have __LODs__ (Except the very simple ones like blocks). Look for your models LODs distances, for example you may have the model on such a distance where it's already 100px small on the screen but still is in LOD0 with 10k tris.
 * Do not leave **hidden objects** and vegetation under terrain or inside other objects, and preferably terrain parts under objects. It wastes the CPU and GPU processing time for nothing.
 * Make assets **modular**. Keep the number of different materials per scene low, and share as many materials between different objects as possible.
 * Use **bilboards** on distance to fake detailed geometry. 
 
 ### Overshading
-Overshading is caused by tiny or thin triangles and can really hurt performance by wasting a significant portion of the GPU’s time. Overshading is a consequence of how **GPUs process pixels in quads, blocks of 2x2 pixels**. It’s done like this so the hardware can do things like comparing UVs between pixels to calculate appropriate mipmap levels. `[3]`
 
-This means that if a triangle only touches a single pixel of a quad, the GPU still processes the whole quad and just throws away the other three pixels, **wasting 75% of the work**. `[3]`
+Overshading is caused by tiny or thin triangles and can really hurt performance by wasting a significant portion of the GPU’s time. Overshading is a consequence of how **GPUs process pixels in quads, blocks of 2x2 pixels**. It’s done like this so the hardware can do things like comparing UVs between pixels to calculate appropriate mipmap levels. [[3](https://www.gamasutra.com/blogs/KeithOConor/20170705/301035/GPU_Performance_for_Game_Artists.php)]
+
+This means that if a triangle only touches a single pixel of a quad, the GPU still processes the whole quad and just throws away the other three pixels, **wasting 75% of the work**. [[3](https://www.gamasutra.com/blogs/KeithOConor/20170705/301035/GPU_Performance_for_Game_Artists.php)]
 
 > Small triangles are bad for performance. 
 
-Filling the frame buffer with anything larger than 16 by 16 tiles have no effect on the GPU performance. The primitive minimum size in pixels is pretty much the same for all vendors. Covering less than 8 by 8 pixels, with two triangles starts to have a significant impact on performance and it grows exponentially. `[4]`
+Filling the frame buffer with anything larger than 16 by 16 tiles have no effect on the GPU performance. The primitive minimum size in pixels is pretty much the same for all vendors. Covering less than 8 by 8 pixels, with two triangles starts to have a significant impact on performance and it grows exponentially. [[4](https://www.g-truc.net/post-0662.html)]
 
-> In the meantime, if we want some good primitive performances, let's set the minimum target to about 8 by 8 pixels per triangles on screen. `[4]`
+> In the meantime, if we want some good primitive performances, let's set the minimum target to about 8 by 8 pixels per triangles on screen. [[4](https://www.g-truc.net/post-0662.html)]
 
-Tiny triangles are also a problem because GPUs can only process and rasterize triangles at a certain rate, which is usually relatively low compared to how many pixels it can process in the same amount of time. With too many small triangles, it can’t produce pixels fast enough to keep the shader units busy, resulting in stalls and idle time – the real enemy of GPU performance. `[4]`
+Tiny triangles are also a problem because GPUs can only process and rasterize triangles at a certain rate, which is usually relatively low compared to how many pixels it can process in the same amount of time. With too many small triangles, it can’t produce pixels fast enough to keep the shader units busy, resulting in stalls and idle time – the real enemy of GPU performance. [[4](https://www.g-truc.net/post-0662.html)]
 
 ### Culling
+
 [Culling explained](https://docs.cryengine.com/display/SDKDOC4/Culling+Explained) on Crytek docs.
 
 Culling is completely excluding objects from processing when they are outside the view. This is an effective way to reduce both the CPU and GPU load.
 
-When multiple meshes are merged into a single object, their individual bounding volumes must be combined into a single large volume that is big enough to enclose every mesh. This increases the likelihood that the visibility system will be able to see some part of the volume, and so will consider the entire collection visible. That means that it becomes a **draw call**, and so the vertex shader must be executed on every vertex in the object - even if very few of those vertices actually appear on the screen. This can lead to a lot of GPU time being wasted because the vertices end up not contributing anything to the final image. `[3]`
+When multiple meshes are merged into a single object, their individual bounding volumes must be combined into a single large volume that is big enough to enclose every mesh. This increases the likelihood that the visibility system will be able to see some part of the volume, and so will consider the entire collection visible. That means that it becomes a **draw call**, and so the vertex shader must be executed on every vertex in the object - even if very few of those vertices actually appear on the screen. This can lead to a lot of GPU time being wasted because the vertices end up not contributing anything to the final image. [[3](https://www.gamasutra.com/blogs/KeithOConor/20170705/301035/GPU_Performance_for_Game_Artists.php)]
 
 
 
 ### Opacity & Overdraw
-Overdraw happens when the same **pixel is drawn multiple times** (when objects are drawn on top of other).
 
-The thing that impacts the **fillrate** the most is **transparent** stuff like particles with alpha blending. Limit the amount of opacity maps you use and their impact on the scene. If your map has a lot of opacity it’s better to add a few extra cuts and reduce the opacity area than to save a few polygons.
+Overdraw happens when the same __pixel is drawn multiple times__ (when objects are drawn on top of other).
+
+The thing that impacts the __fillrate__ the most is __transparent__ stuff like particles with alpha blending. Limit the amount of opacity maps you use and their impact on the scene. If your map has a lot of opacity it’s better to add a few extra cuts and reduce the opacity area than to save a few polygons.
 
 There's an [article](http://realtimecollisiondetection.net/blog/?p=91) on particle optimizations for the further reading
 
 
 
 ### Lighting & Shadows
+
 Static lights are  the fastest, dynamic lights are more costly. Try to avoid lighting spheres or conuses to overlap each other. Reduce lights amount and cast distance as much as possible.
 
 > Bake as much lighting effects as possible. 
@@ -126,7 +137,7 @@ Lights can optionally cast shadows. This gives them greater realism but has a **
 
 > Disable shadow casting where possible.
 
-Soft shadows have a greater rendering overhead than hard shadows but __this only affects the GPU and does not cause much extra CPU work__. [[`6`](https://www.construct.net/en/blogs/construct-official-blog-1/remember-not-waste-memory-796)]
+Soft shadows have a greater rendering overhead than hard shadows but __this only affects the GPU and does not cause much extra CPU work__. [[6](https://www.construct.net/en/blogs/construct-official-blog-1/remember-not-waste-memory-796)]
 
 
 ### Screen space effects
@@ -170,13 +181,13 @@ Try to keep the number of UV mapping seams and hard edges (doubled-up vertices) 
 
 Note that the actual number of vertices that graphics hardware has to process is usually not the same as the number reported by a 3D application. Modeling applications usually display the number of distinct corner points that make up a model (known as the geometric vertex count). For a graphics card, however, some geometric vertices need to be split into two or more logical vertices for rendering purposes. A vertex must be split if it has multiple normals, UV coordinates or vertex colors. `[8]`
 
-> Do not make too many too trivial shapes. [`2`]
+> Do not make too many too trivial shapes.
 
 Do not make millions of shapes with only a few vertices. Merge your shapes to have thousands of triangles in a single shape. 
 
 BUT:
 
-> Do not make too few shapes. `[2]`
+> Do not make too few shapes.
 
 This one is explained above in the culling section.
 
@@ -198,7 +209,7 @@ Nice [presentation](https://www.nvidia.com/docs/IO/8228/BatchBatchBatch.pdf) fro
 
 # VRAM
 
-VRAM only holds four kinds of image data:
+VRAM only store image data the GPU needs to render the frame:
 
 * Shader Programs
 * Vertex Buffers
@@ -217,9 +228,9 @@ Textures impact the _bandwidth_ the most. There are ways to optimize them to inc
 
 ### Texture compression
 
-Popular compressed formats like PNG and JPG cannot be decoded directly by the GPU. Before images are loaded into memory they must first be converted to a format that can be quickly accessed by the GPU. This involves creating mip-maps and either compressing the image so it takes up less video memory or leaving it uncompressed. `[11]`
+Popular compressed formats like PNG and JPG cannot be decoded directly by the GPU. Before images are loaded into memory they must first be converted to a format that can be quickly accessed by the GPU. This involves creating mip-maps and either compressing the image so it takes up less video memory or leaving it uncompressed. [11]
 
-A better option is to use hardware accelerated formats designed for the GPU. This means that they do not need to be decompressed before being copied and results in decreased loading times for the player and may even lead to increased performance due to hardware optimizations. `[12]`
+A better option is to use hardware accelerated formats designed for the GPU. This means that they do not need to be decompressed before being copied and results in decreased loading times for the player and may even lead to increased performance due to hardware optimizations. [12]
 
 The formats designed for the GPU:
 
@@ -264,6 +275,9 @@ For example, we have 1k texture with 16 bits per pixel:
 2048 / 1024 = 2 Mb (converted kilobytes to megabytes).
 ```
 
+That means our texture is going to take 2Mb of VRAM.
+
+
 ### BC1..3 (DXT1..5)
 
 > DXT compression works with texels and each texel is a _4x4 block_ of pixels, DXT can't work with an image with a dimension smaller than 4.
@@ -281,7 +295,7 @@ MIP Maps are used for LOD. When rendering textures on models far from the camera
 
 ### Texture Atlases
 
-An Nvidia paper [Improve Batching Using
+An Nvidia paper - [Improve Batching Using
 Texture Atlases](http://download.nvidia.com/developer/NVTextureSuite/Atlas_Tools/Texture_Atlas_Whitepaper.pdf)
 
 
@@ -310,6 +324,8 @@ The relative costs of collision detection, from most expensive to least:
 1. box
 1. plane
 1. point
+
+* [Real-Time Collision Detection](https://www.amazon.com/exec/obidos/tg/detail/-/1558607323?tag=realtimecolli-20)
 
 ### Havok Destruction
 
