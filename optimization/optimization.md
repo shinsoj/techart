@@ -1,12 +1,3 @@
-Gathered from all over the web, attached links to the original texts. It's still work in progress.
-
-
-__Objective__: give the artists a knowledge on what’s going on, how they can make a big impact on a game’s performance and why some things are done one way, not the other.
-
-### Learn More
-
-* [The Witcher 3: Optimizing Content Pipelines for Open-World Games](https://www.youtube.com/watch?v=p8CMYD_5gE8) - __GDC 2015 talk__
-
 # The basics
 
 __Optimization__ is the process of maximizing of profitable characteristics, and minimizing costs.
