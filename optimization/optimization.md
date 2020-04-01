@@ -2,9 +2,6 @@
 
 __Optimization__ is the process of maximizing of profitable characteristics, and minimizing costs.
 
-The optimization problem is formulated if the __technological requirements__ are specified. 
-
-Optimization process is quite simple. Start by looking at the whole system, run a __benchmark__, find a bottleneck, __detect__ where resourses are being used, __solve__ this, then __check__ if it was an improvement and __repeat__ the process.
 
 ### Learn More
 
@@ -12,16 +9,23 @@ Optimization process is quite simple. Start by looking at the whole system, run 
 
 ## Benchmark
 
+First, the __technological requirements__ must be specified. Next, you should _profile_ your game and identify a _bottleneck_.
+
+### CPU or GPU bound?
+
+Turn down all your graphical settings and/or turn down your resolution as low as possible. If that does not change your framerate, or does just a little, then your CPU is the bottleneck. But if the performance improves, then a GPU is the bottleneck.
+
+[Identify Basic GPU/CPU Bound Scenarios](https://software.intel.com/en-us/gpa-cookbook-identify-basic-gpu-cpu-bound-scenarios)
+
+Memory isn’t usually a bottleneck, but it can be. If you don’t have enough RAM, that can cause problems.
+
+### Learn More
+
 Intel GPA [guide](https://software.intel.com/en-us/articles/practical-game-performance-analysis-using-intel-graphics-performance-analyzers?elqTrackId=c1e06b59e39d48aaac871d9ad949f1ac&elqaid=20092&elqat=2)
 
 * [Optimizing DayZ with Intel GPA - Buzz Workshop Portland, OR](https://www.youtube.com/watch?v=xdGDzH6S7gc)
 * [UE4 Graphics Profiling: Intel Frame Analyzer](https://www.youtube.com/watch?v=lYMOm3tySNI)
 * [Optimizations Enhance Just Cause 3 on Systems with Intel® Iris™ Graphics](https://software.intel.com/en-us/articles/optimizations-enhance-just-cause-3-on-systems-with-intel-iris-graphics)
-
-### CPU or GPU bound?
-
-[Identify Basic GPU/CPU Bound Scenarios](https://software.intel.com/en-us/gpa-cookbook-identify-basic-gpu-cpu-bound-scenarios)
-
 
 # FPS vs MS
 
