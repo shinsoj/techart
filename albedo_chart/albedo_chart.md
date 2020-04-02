@@ -62,7 +62,7 @@ And calculate, for this example we have `0.27` albedo value (with some error):
 
 ## How to check albedo value in Substance Designer
 
-__Albedo Value__ node has two outputs - Value and Heat map:
+[__Albedo Value__ node](https://github.com/shinsoj/techart/raw/master/albedo_chart/albedo_value.sbs) has two outputs - Value and Heat map:
 
 ![example](https://github.com/shinsoj/techart/blob/master/albedo_chart/img/03.jpg)
 
@@ -75,6 +75,8 @@ Heat map output shows you if the color fits the range of the material you choose
 ![example](https://github.com/shinsoj/techart/blob/master/albedo_chart/img/10.jpg)
 
 ![example](https://github.com/shinsoj/techart/blob/master/albedo_chart/img/11.jpg)
+
+With this node you can either check the value manually, or tweak and expand the heatmap's array of the material values inside the node as you prefer.
 
 If you're curious about what's inside, there is a Function to convert sRGB to Linear:
 
