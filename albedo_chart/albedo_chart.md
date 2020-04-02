@@ -52,7 +52,7 @@ For example, color-pick:
 
 ![example](https://github.com/shinsoj/techart/blob/master/albedo_chart/img/01.jpg)
 
-And calculate, for this example we have `0.27` albedo value:
+And calculate, for this example we have `0.27` albedo value (with some error):
 ```
 ((0/255)^2.2 + (168/255)^2.2 + (170/255)^2.2) / 3 = 0.27
 ```
@@ -62,25 +62,27 @@ And calculate, for this example we have `0.27` albedo value:
 
 ## How to check albedo value in Substance Designer
 
-Add __Convert to Linear__ node and __Grayscale Conversion__ node with standard settings.
+__Albedo Value__ node has two outputs - Value and Heat map:
 
 ![example](https://github.com/shinsoj/techart/blob/master/albedo_chart/img/03.jpg)
 
-Pointing at color with cursor in 2D view you can see it's value in float. On the example below, it's `0.270588`.
+Pointing at the color with cursor in 2D view you can see it's value in float. For our example color we did before, it's `0.262745`.
 
 ![example](https://github.com/shinsoj/techart/blob/master/albedo_chart/img/04.jpg)
+
+Heat map output shows you if the color fits the range of the material you choose in properties:
+
+![example](https://github.com/shinsoj/techart/blob/master/albedo_chart/img/10.jpg)
+
+![example](https://github.com/shinsoj/techart/blob/master/albedo_chart/img/11.jpg)
 
 If you're curious about what's inside, there is a Function to convert sRGB to Linear:
 
 ![example](https://github.com/shinsoj/techart/blob/master/albedo_chart/img/08.jpg)
 
-Then there's another function that uses the first one to convert each channel separately in the input image:
+This function is used inside the __Pixel Processor__ node which samples the input and converts each channel separately:
 
 ![example](https://github.com/shinsoj/techart/blob/master/albedo_chart/img/09.jpg)
-
-This function is used inside the __Pixel Processor__ node, sample the input and wire it with the function, the alpha channel - `W` - stays unmodified in this case:
-
-![example](https://github.com/shinsoj/techart/blob/master/albedo_chart/img/10.jpg)
 
 
 

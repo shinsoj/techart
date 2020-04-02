@@ -10,7 +10,7 @@ It's still work in progress.
 Materials
 ----------
 
-[Albedo chart](https://github.com/shinsoj/techart/blob/master/albedo_chart/albedo_chart.md) for you to create proper materials. Probably will update it with more info with time.
+[Article](https://github.com/shinsoj/techart/blob/master/albedo_chart/albedo_chart.md)  About pbr maps, color space conversions and albedo values reference for you to create proper materials.
 
 ### Substance Designer
 
