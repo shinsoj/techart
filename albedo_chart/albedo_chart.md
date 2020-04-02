@@ -1,6 +1,7 @@
 # General PBR info
 
-There's a lot of info about this theme written already, so I wouldn't copy-paste it all, there are some [links](http://wiki.polycount.com/wiki/PBR)
+There's a lot of info about this theme written already, so I wouldn't copy-paste it all, there are some [links at Polycount](http://wiki.polycount.com/wiki/PBR). Allegorithmic PBR Guide [1](https://academy.substance3d.com/courses/the-pbr-guide-part-1)
+ and [2](https://academy.substance3d.com/courses/the-pbr-guide-part-2)
 
 And here's also a nice [video from SIGGRAPH](https://www.youtube.com/watch?v=j-A0mwsJRmk) and this real good quick explanation from [Cubetutorials](https://www.youtube.com/watch?v=GVNnfZG4riw).
 
@@ -23,19 +24,26 @@ Dielectrics (non-metals) have a `0` __metallness__ value and do not require a me
 
 # Color space conversions
 
-This math section is only to show how it actually works. 
+The formula for converting _sRGB to linear_:
+```
+If 0 ≤ S ≤ 0.04045:
+	L = S/12.92
+Else 0.04045 < S ≤ 1:
+	L = ((S+0.055)/1.055)2.4
+```
 
-Here are formulas to convert between color spaces:
+The formulas below are simplified approximations of converting _sRGB to Linear and the reverse_, which should give good enough results in most cases (it gives larger relative errors in darker regions but that's where the eyes are less sensitive):
 ```
-sRGB = ((Linear RGB / 255) ^ 0.4545) * 255
-Linear RGB = ((sRGB / 255) ^ 2.2) * 255
+Linear = ((sRGB / 255) ^ 2.2) * 255
+sRGB = ((Linear / 255) ^ 0.4545) * 255
 ```
+
 Here's some explanation, where the values are coming from:
 * 2.2 # this is gamma
 * 0.4545 = 1 / 2.2 # this is an inverse of gamma
 * X / 255 # this means _normalizing_ the value (convert from 0-255 range to 0-1)
 
-To check the albedo of your texture (in sRGB space):
+To check the albedo of your texture (in sRGB space) we should separate the channels:
 ```
 Albedo = ((R/255)^2.2 + (G/255)^2.2 + (B/255)^2.2) / 3
 ```
@@ -49,13 +57,10 @@ And calculate, for this example we have `0.27` albedo value:
 ((0/255)^2.2 + (168/255)^2.2 + (170/255)^2.2) / 3 = 0.27
 ```
 
-![example](https://github.com/shinsoj/techart/blob/master/albedo_chart/img/02.jpg)
-
 > To avoid doing any calculations, you can check the value in Photoshop and Substance Designer.
 
 
-
-# How to check albedo value in Substance Designer
+## How to check albedo value in Substance Designer
 
 Add __Convert to Linear__ node and __Grayscale Conversion__ node with standard settings.
 
@@ -65,8 +70,21 @@ Pointing at color with cursor in 2D view you can see it's value in float. On the
 
 ![example](https://github.com/shinsoj/techart/blob/master/albedo_chart/img/04.jpg)
 
+If you're curious about what's inside, there is a Function to convert sRGB to Linear:
 
-# How to check albedo value in Photoshop
+![example](https://github.com/shinsoj/techart/blob/master/albedo_chart/img/08.jpg)
+
+Then there's another function that uses the first one to convert each channel separately in the input image:
+
+![example](https://github.com/shinsoj/techart/blob/master/albedo_chart/img/09.jpg)
+
+This function is used inside the __Pixel Processor__ node, sample the input and wire it with the function, the alpha channel - `W` - stays unmodified in this case:
+
+![example](https://github.com/shinsoj/techart/blob/master/albedo_chart/img/10.jpg)
+
+
+
+## How to check albedo value in Photoshop
 
 Add __Exposure correction__ layer with __Gamma Correction__ set to `0.4545`:
 

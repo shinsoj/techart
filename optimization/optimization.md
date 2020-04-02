@@ -59,7 +59,7 @@ While the frames per second increase, the number of milliseconds decreases at a 
 10fps = 100ms
 ```
 
-__Example__: we have a scene running at 35fps, let's say we want to use [HBAO+ Ultra](http://developer.download.nvidia.com/gameworks/events/GDC2016/atatarinov_alpanteleev_advanced_ao.pdf) that takes 4.8ms `1000/35 = 28.57ms`, then we add HBAO `28.57 + 4.8 = 33.37ms` or `30fps`.
+__Example__: we have a scene running at 35fps - `1000/35 = 28.57ms`, let's say we want to use [HBAO+ Ultra](http://developer.download.nvidia.com/gameworks/events/GDC2016/atatarinov_alpanteleev_advanced_ao.pdf) that takes 4.8ms - `28.57 + 4.8 = 33.37ms`, that means our scene is now running at 30fps.
 
 ### Learn More
 

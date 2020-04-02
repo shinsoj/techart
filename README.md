@@ -20,7 +20,9 @@ Materials
 
 ### UE4
 
-* UE4 materials basics
+* Height based (world coords) dirt
+* Dirt/decal scatter
+* Vertex Color blend
 
 Houdini
 ----------

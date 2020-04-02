@@ -1,5 +1,25 @@
 # Creating masks with image classification techniques
 
+Here's my script that creates masks very simple and fast way: __[k-means_classification.py](https://github.com/shinsoj/techart/blob/master/k-means/k-means_classification.py)__
+
+It uses _unsupervised K-Means_ method to create masks out of the satellite image.
+
+To run it you need to install Python (with checkbox __Add Python to PATH__)
+and then install libraries, just by running this with cmd:
+
+```
+python -m pip install numpy matplotlib opencv-python sklearn
+```
+
+Its input is _input.png_, output includes:
+* colormap.png
+* index_map.png, where each tone = number of the mask
+* mask[0...n].png
+
+![example](https://github.com/shinsoj/techart/blob/master/k-means/img/img1.jpg)
+
+If you need supervised methods with more control and precision, you can use QGis with some plugins or try ENVI or ArcGis.
+
 ## What is image classification
 
 It's an approach to set classes (like forest, field, water, etc) to pixels, making a map of areas of different types. In the case of gamedevelopment, we can use it to create masks for textures for a terrain.
@@ -13,7 +33,7 @@ There are three techiques:
 
 This one is the most basic one, it clusters pixels and sets classes to them. Ome of the common clustering methods is [K-Means](https://en.wikipedia.org/wiki/K-means_clustering). You identify the number of clusters you wish to generate and alorithm does the work.
 
-### Useful links
+### Learn more
 
 If you want to learn more about this theme, you can start with these links. 
 
@@ -22,7 +42,7 @@ If you want to learn more about this theme, you can start with these links.
 * [Supervised and Unsupervised Classification in Remote Sensing](https://gisgeography.com/supervised-unsupervised-classification-arcgis/)
 * [Remote sensing applications](https://en.wikipedia.org/wiki/Remote_sensing_application) 
 
-From proprietary software ENVI is comfy to work with, but there's also a free option - **QGis** with plugins.
+From proprietary software ENVI is comfy to work with, but there's also a free option - __QGis__ with plugins.
 
 Links to data:
 
@@ -31,32 +51,10 @@ Links to data:
 * http://gisgeography.com/best-free-gis-data-sources-raster-vector/ - gis data, raster, vector
 * http://gisgeography.com/free-global-land-cover-land-use-data/ - land cover, land use
 
-The **[land covers](https://en.wikipedia.org/wiki/Land_cover)** are created using the methods described above.
+The __[land covers](https://en.wikipedia.org/wiki/Land_cover)__ are created using the methods described above.
 * [9 Free Global Land Cover / Land Use Data Sets](https://gisgeography.com/free-global-land-cover-land-use-data/)
 
-## Creating masks the fast way (option 1)
-
-Here's my script that creates masks very simply and fast way: **[k-means_classification.py](https://github.com/shinsoj/techart/blob/master/k-means/k-means_classification.py)**
-
-It uses unsupervised K-Means method to create masks out of the satellite image.
-
-To run it you need to install Python (with checkbox **Add Python to PATH**)
-and then install libraries, just running this with cmd:
-
-```
-python -m pip install numpy matplotlib opencv-python sklearn
-```
-
-It's input is *input.png*, output includes:
-* colormap.png
-* index_map.png, where each tone = number of the mask
-* mask[0...n].png
-
-![example](https://github.com/shinsoj/techart/blob/master/k-means/img/img1.jpg)
-
-If you need supervised methods with more control and precision, you can use QGis with some plugins or try ENVI or ArcGis.
-
-## Using QGis with Orfeo (option 2)
+## Masks using QGis with Orfeo (option 2, just in case)
 
 ### Installing QGis and Orfeo toolbox
 
