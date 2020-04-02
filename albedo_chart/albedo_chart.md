@@ -1,7 +1,7 @@
 # General PBR info
 
-There's a lot of info about this theme written already, so I wouldn't copy-paste it all, there are some [links at Polycount](http://wiki.polycount.com/wiki/PBR). Allegorithmic PBR Guide [1](https://academy.substance3d.com/courses/the-pbr-guide-part-1)
- and [2](https://academy.substance3d.com/courses/the-pbr-guide-part-2)
+There's a lot of info about this theme written already, so I wouldn't copy-paste it all, there are some [links at Polycount](http://wiki.polycount.com/wiki/PBR). Allegorithmic PBR Guide __[1](https://academy.substance3d.com/courses/the-pbr-guide-part-1)__
+ and __[2](https://academy.substance3d.com/courses/the-pbr-guide-part-2)__
 
 And here's also a nice [video from SIGGRAPH](https://www.youtube.com/watch?v=j-A0mwsJRmk) and this real good quick explanation from [Cubetutorials](https://www.youtube.com/watch?v=GVNnfZG4riw).
 
@@ -26,9 +26,9 @@ Dielectrics (non-metals) have a `0` __metallness__ value and do not require a me
 
 The formula for converting _sRGB to linear_:
 ```
-If 0 ≤ S ≤ 0.04045:
+If (0 ≤ S ≤ 0.04045):
 	L = S/12.92
-Else 0.04045 < S ≤ 1:
+Else (0.04045 < S ≤ 1):
 	L = ((S+0.055)/1.055)2.4
 ```
 
@@ -195,9 +195,7 @@ Values are in __Linear RGB__ (float).
 
 ## Metallic values
 
-> Metals have _black diffuse_ albedo value and _colored specular_ albedo. 
-
-In metalness-roughness workflow, for metals (pixels set to white in the metalness map) the specular color and intensity is taken from the albedo map. Metals albedo values are between `0.5` and `0.98` (`180 sRGB` value and brighter). Lower values are for matte, higher are for polished metal.
+Metals albedo values are between `0.5` and `0.98` (`180 sRGB` value and brighter). Lower values are for matte, higher are for polished metal.
 
 sRGB values are for the reference, may vary a little bit.
 
