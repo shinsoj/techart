@@ -25,7 +25,7 @@ Dielectrics (non-metals) have a `0` __metallness__ value and do not require a me
 
 This math section is only to show how it actually works. 
 
-Here are formulas to convert between color spaces:
+Here are formulas to convert between color spaces (a simplified approximation which should give good enough results in most cases):
 ```
 sRGB = ((Linear RGB / 255) ^ 0.4545) * 255
 Linear RGB = ((sRGB / 255) ^ 2.2) * 255
