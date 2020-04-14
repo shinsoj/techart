@@ -1,8 +1,8 @@
 # Creating masks with image classification techniques
 
-Here's my script that creates masks very simple and fast way: __[k-means_classification.py](https://github.com/shinsoj/techart/blob/master/k-means/k-means_classification.py)__
+Here's my script: __[k-means_classification.py](https://github.com/shinsoj/techart/blob/master/k-means/k-means_classification.py)__
 
-It uses _unsupervised K-Means_ method to create masks out of the satellite image.
+It uses _unsupervised K-Means_ method to create masks out of the satellite image for fast terrain prototyping.
 
 To run it you need to install Python (with checkbox __Add Python to PATH__)
 and then install libraries, just by running this with cmd:
