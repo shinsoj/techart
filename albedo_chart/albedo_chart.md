@@ -29,9 +29,15 @@ The formula for converting _sRGB to linear_:
 If (0 ≤ S ≤ 0.04045):
 	L = S/12.92
 Else (0.04045 < S ≤ 1):
-	L = ((S+0.055)/1.055)2.4
+	L = ((S+0.055)/1.055)^2.4
 ```
-
+And _Linear to sRGB_:
+```
+If (0 ≤ L ≤ 0.0031308):
+	S = L * 12.92
+Else (0.0031308 < L ≤ 1):
+	S = 1.055*L^(1/2.4) - 0.055
+```
 The formulas below are simplified approximations of converting _sRGB to Linear and the reverse_, which should give good enough results in most cases (it gives larger relative errors in darker regions but that's where the eyes are less sensitive):
 ```
 Linear = ((sRGB / 255) ^ 2.2) * 255
