@@ -45,9 +45,9 @@ sRGB = ((Linear / 255) ^ 0.4545) * 255
 ```
 
 Here's some explanation, where the values are coming from:
-* 2.2 # this is gamma
-* 0.4545 = 1 / 2.2 # this is an inverse of gamma
-* X / 255 # this means _normalizing_ the value (convert from 0-255 range to 0-1)
+* `2.2` - this is gamma
+* `0.4545 = 1 / 2.2` - this is an inverse of gamma
+* `X / 255` - this means _normalizing_ the value (convert from 0-255 range to 0-1)
 
 To check the albedo of your texture (in sRGB space) we should separate the channels:
 ```
@@ -205,7 +205,7 @@ Values are in __Linear RGB__ (float).
 
 Metals albedo values are between `0.5` and `0.98` (`180 sRGB` value and brighter). Lower values are for matte, higher are for polished metal.
 
-sRGB values are for the reference, may vary a little bit.
+These sRGB values are for the reference, may vary a little bit.
 
 * Iron  = `c4c7c7` (198, 198, 200)
 * Brass = `d6b97b` (214, 185, 123)
