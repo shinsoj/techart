@@ -6,10 +6,17 @@ __Optimization__ is the process of maximizing of profitable characteristics, and
 ### Learn More
 
 * [Unreal Engine 4 Optimization Tutorial](https://software.intel.com/en-us/articles/unreal-engine-4-optimization-tutorial-part-1)
+* [How Drifter Optimized & Delivered Robo Recall for Oculus Quest | Unreal Dev Days 2019](https://www.youtube.com/watch?v=o-6EMTjzvns)
 
-## Benchmark
+## Profiling
 
-First, the __technological requirements__ must be specified. Next, you should _profile_ your game and identify a _bottleneck_.
+Benchmark process steps:
+
+1. Specify _technological requirements_ 
+1. _Profile_ your game 
+1. Identify a _bottleneck_
+
+Watch this for the begining: [UE4 Performance and Profiling | Unreal Dev Day Montreal 2017 | Unreal Engine](https://www.youtube.com/watch?v=hcxetY8g_fs)
 
 ### CPU or GPU bound?
 
@@ -19,13 +26,26 @@ Turn down all your graphical settings and/or turn down your resolution as low as
 
 Memory isn’t usually a bottleneck, but it can be. If you don’t have enough RAM, that can cause problems.
 
+
 ### Learn More
 
-Intel GPA [guide](https://software.intel.com/en-us/articles/practical-game-performance-analysis-using-intel-graphics-performance-analyzers?elqTrackId=c1e06b59e39d48aaac871d9ad949f1ac&elqaid=20092&elqat=2)
-
+* Intel GPA [guide](https://software.intel.com/en-us/articles/practical-game-performance-analysis-using-intel-graphics-performance-analyzers?elqTrackId=c1e06b59e39d48aaac871d9ad949f1ac&elqaid=20092&elqat=2)
 * [Optimizing DayZ with Intel GPA - Buzz Workshop Portland, OR](https://www.youtube.com/watch?v=xdGDzH6S7gc)
 * [UE4 Graphics Profiling: Intel Frame Analyzer](https://www.youtube.com/watch?v=lYMOm3tySNI)
 * [Optimizations Enhance Just Cause 3 on Systems with Intel® Iris™ Graphics](https://software.intel.com/en-us/articles/optimizations-enhance-just-cause-3-on-systems-with-intel-iris-graphics)
+
+## Hotspots and Bottlenecks
+
+Hotspots are the small fractions of code that have major performance impact.
+
+Bottlenecks
+
+__Trade-Offs__
+1. Performance vs Space
+2. Accuracy vs Speed
+3. Maintainability vs Complexity
+
+Trading performance against memory usage, for example caching. Saving expensive CPU computation using quick memory read.
 
 # FPS vs MS
 
@@ -70,7 +90,7 @@ __Example__: we have a scene running at 35fps - `1000/35 = 28.57ms`, let's say w
 __FPS drops are caused by CPU and GPU taking longer time to process the frames.__
 
 * For CPU, most demanding are _draw calls_, _positions_,  _math_ and _visibility_ (physics, AI, skeletal animations, projectiles, etc.)
-* GPU is often limited by _fillrate_ or memory _bandwidth_. Typical problems are lighting, dynamic shadows or translucency.
+* GPU is often limited by _fillrate_ or memory _bandwidth_. Typical problems are shaders, lights, dynamic shadows, translucency, overdraw.
 
 ### Polycount & LODs
 
@@ -84,21 +104,21 @@ General advises:
 
 * Watch the number of vertices and faces of the models, check for the __polycount limits__. Reduce tris and remove polys of the model which are never visible.
 * Make sure that all of the models have __LODs__ (Except the very simple ones like blocks). Look for your models LODs distances, for example you may have the model on such a distance where it's already 100px small on the screen but still is in LOD0 with 10k tris.
-* Do not leave **hidden objects** and vegetation under terrain or inside other objects, and preferably terrain parts under objects. It wastes the CPU and GPU processing time for nothing.
-* Make assets **modular**. Keep the number of different materials per scene low, and share as many materials between different objects as possible.
-* Use **bilboards** on distance to fake detailed geometry. 
+* Do not leave __hidden objects__ and vegetation under terrain or inside other objects, and preferably terrain parts under objects. It wastes the CPU and GPU processing time for nothing.
+* Make assets __modular__. Keep the number of different materials per scene low, and share as many materials between different objects as possible.
+* Use __bilboards__ on distance to fake detailed geometry. 
 
 ### Overshading
 
-Overshading is caused by tiny or thin triangles and can really hurt performance by wasting a significant portion of the GPU’s time. Overshading is a consequence of how **GPUs process pixels in quads, blocks of 2x2 pixels**. It’s done like this so the hardware can do things like comparing UVs between pixels to calculate appropriate mipmap levels. [[3](https://www.gamasutra.com/blogs/KeithOConor/20170705/301035/GPU_Performance_for_Game_Artists.php)]
+Overshading is caused by tiny or thin triangles and can really hurt performance by wasting a significant portion of the GPU’s time. Overshading is a consequence of how __GPUs process pixels in quads, blocks of 2x2 pixels__. It’s done like this so the hardware can do things like comparing UVs between pixels to calculate appropriate mipmap levels. [[3](https://www.gamasutra.com/blogs/KeithOConor/20170705/301035/GPU_Performance_for_Game_Artists.php)]
 
-This means that if a triangle only touches a single pixel of a quad, the GPU still processes the whole quad and just throws away the other three pixels, **wasting 75% of the work**. [[3](https://www.gamasutra.com/blogs/KeithOConor/20170705/301035/GPU_Performance_for_Game_Artists.php)]
+This means that if a triangle only touches a single pixel of a quad, the GPU still processes the whole quad and just throws away the other three pixels, __wasting 75% of the work__. [[3](https://www.gamasutra.com/blogs/KeithOConor/20170705/301035/GPU_Performance_for_Game_Artists.php)]
 
 > Small triangles are bad for performance. 
 
 Filling the frame buffer with anything larger than 16 by 16 tiles have no effect on the GPU performance. The primitive minimum size in pixels is pretty much the same for all vendors. Covering less than 8 by 8 pixels, with two triangles starts to have a significant impact on performance and it grows exponentially. [[4](https://www.g-truc.net/post-0662.html)]
 
-> In the meantime, if we want some good primitive performances, let's set the minimum target to about 8 by 8 pixels per triangles on screen. [[4](https://www.g-truc.net/post-0662.html)]
+> If we want some good performance, let's set the minimum size to about 8 pixels per triangle. It's recommended to have triangles __at least 16 pixels in size__.
 
 Tiny triangles are also a problem because GPUs can only process and rasterize triangles at a certain rate, which is usually relatively low compared to how many pixels it can process in the same amount of time. With too many small triangles, it can’t produce pixels fast enough to keep the shader units busy, resulting in stalls and idle time – the real enemy of GPU performance. [[4](https://www.g-truc.net/post-0662.html)]
 
@@ -108,7 +128,7 @@ Tiny triangles are also a problem because GPUs can only process and rasterize tr
 
 Culling is completely excluding objects from processing when they are outside the view. This is an effective way to reduce both the CPU and GPU load.
 
-When multiple meshes are merged into a single object, their individual bounding volumes must be combined into a single large volume that is big enough to enclose every mesh. This increases the likelihood that the visibility system will be able to see some part of the volume, and so will consider the entire collection visible. That means that it becomes a **draw call**, and so the vertex shader must be executed on every vertex in the object - even if very few of those vertices actually appear on the screen. This can lead to a lot of GPU time being wasted because the vertices end up not contributing anything to the final image. [[3](https://www.gamasutra.com/blogs/KeithOConor/20170705/301035/GPU_Performance_for_Game_Artists.php)]
+When multiple meshes are merged into a single object, their individual bounding volumes must be combined into a single large volume that is big enough to enclose every mesh. This increases the likelihood that the visibility system will be able to see some part of the volume, and so will consider the entire collection visible. That means that it becomes a __draw call__, and so the vertex shader must be executed on every vertex in the object - even if very few of those vertices actually appear on the screen. This can lead to a lot of GPU time being wasted because the vertices end up not contributing anything to the final image. [[3](https://www.gamasutra.com/blogs/KeithOConor/20170705/301035/GPU_Performance_for_Game_Artists.php)]
 
 
 
@@ -116,19 +136,20 @@ When multiple meshes are merged into a single object, their individual bounding 
 
 Overdraw happens when the same __pixel is drawn multiple times__ (when objects are drawn on top of other).
 
-The thing that impacts the __fillrate__ the most is __transparent__ stuff like particles with alpha blending. Limit the amount of opacity maps you use and their impact on the scene. If your map has a lot of opacity it’s better to add a few extra cuts and reduce the opacity area than to save a few polygons.
+The thing that impacts the __fillrate__ the most is __transparent__ stuff like particles with alpha blending. Limit the amount of opacity maps you use and their impact on the scene. If your map has a lot of opacity __it’s better to add a few extra cuts__ and reduce the opacity area than to save a few polygons.
 
 There's an [article](http://realtimecollisiondetection.net/blog/?p=91) on particle optimizations for the further reading
 
+__Translucency__ is also very heavy for performance, never use translucency unless absolutely necessary.
 
 
 ### Lighting & Shadows
 
-Static lights are  the fastest, dynamic lights are more costly. Try to avoid lighting spheres or conuses to overlap each other. Reduce lights amount and cast distance as much as possible.
+Static lights are the fastest, dynamic lights are more costly. Try to __avoid__ lighting spheres or conuses to __overlap__ each other. __Reduce lights amount and cast distance__ as much as possible.
 
 > Bake as much lighting effects as possible. 
 
-Lights can optionally cast shadows. This gives them greater realism but has a **bigger performance cost**. Lights and realtime shadows have a big impact on performance, these effects give extra draw calls for the CPU and extra processing on the GPU. 
+Lights can optionally cast __shadows__. This gives them greater realism but has a __bigger performance cost__. Lights and realtime shadows have a big impact on performance, these effects give extra draw calls for the CPU and extra processing on the GPU. Also, shadow maps resolution has a moderate performance cost.
 
 > Disable shadow casting where possible.
 
@@ -136,6 +157,10 @@ Soft shadows have a greater rendering overhead than hard shadows but __this only
 
 
 ### Screen space effects
+
+__Screen Space Reflection (SSR)__ techniques attempt to mirror what's currently on-screen on reflective surfaces. 
+
+__Screen Space Ambient Occlusion (SSAO)__ adds extra shadows in the places where objects contact.
 
 [Adaptive Screen Space Ambient Occlusion](https://software.intel.com/en-us/articles/adaptive-screen-space-ambient-occlusion)
 
@@ -190,7 +215,7 @@ Each shape is passed as a whole, and shapes may be culled. By using only a few v
 
 > Draw calls often have a more significant impact on performance than polycount.
 
-Which means if you need some extra polys to make a model smoother - go for it.
+Which means __if you need some extra polys to make a model smoother - go for it.__
 
 Even if using different meshes and producing multiple draw calls, **you can improve performance by avoiding multiple materials, and grouping multiple textures on a single atlas** to avoid switching texture maps (which causes Render State changes with extra Draw Calls).
 
