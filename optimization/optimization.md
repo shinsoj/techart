@@ -1,26 +1,22 @@
-# The basics
+# Optimization
 
-__Optimization__ is the process of maximizing of profitable characteristics, and minimizing costs.
+> __Optimization__ is the process of maximizing of profitable characteristics, and minimizing costs.
+
+The goal of this article is to share some info about what causes performance issues, what are the most common problems and how to fix them.
+
+Watch this for the begining: [UE4 Performance and Profiling | Unreal Dev Day Montreal 2017 | Unreal Engine](https://www.youtube.com/watch?v=hcxetY8g_fs)
 
 
-### Learn More
-
-* [Unreal Engine 4 Optimization Tutorial](https://software.intel.com/en-us/articles/unreal-engine-4-optimization-tutorial-part-1)
-* [How Drifter Optimized & Delivered Robo Recall for Oculus Quest | Unreal Dev Days 2019](https://www.youtube.com/watch?v=o-6EMTjzvns)
-
-## Profiling
-
-Benchmark process steps:
+# Profiling
 
 1. Specify _technological requirements_ 
 1. _Profile_ your game 
 1. Identify a _bottleneck_
 
-Watch this for the begining: [UE4 Performance and Profiling | Unreal Dev Day Montreal 2017 | Unreal Engine](https://www.youtube.com/watch?v=hcxetY8g_fs)
 
-### CPU or GPU bound?
+## CPU or GPU bound?
 
-Turn down all your graphical settings and/or turn down your resolution as low as possible. If that does not change your framerate, or does just a little, then your CPU is the bottleneck. But if the performance improves, then a GPU is the bottleneck.
+Turn down all your graphical settings and/or set your resolution as low as possible. If that does not change your framerate, or does just a little, then your CPU is the bottleneck, othervise the GPU is.
 
 [Identify Basic GPU/CPU Bound Scenarios](https://software.intel.com/en-us/gpa-cookbook-identify-basic-gpu-cpu-bound-scenarios)
 
@@ -29,10 +25,12 @@ Memory isn’t usually a bottleneck, but it can be. If you don’t have enough R
 
 ### Learn More
 
+* [Unreal Engine 4 Optimization Tutorial](https://software.intel.com/en-us/articles/unreal-engine-4-optimization-tutorial-part-1)
 * Intel GPA [guide](https://software.intel.com/en-us/articles/practical-game-performance-analysis-using-intel-graphics-performance-analyzers?elqTrackId=c1e06b59e39d48aaac871d9ad949f1ac&elqaid=20092&elqat=2)
 * [Optimizing DayZ with Intel GPA - Buzz Workshop Portland, OR](https://www.youtube.com/watch?v=xdGDzH6S7gc)
 * [UE4 Graphics Profiling: Intel Frame Analyzer](https://www.youtube.com/watch?v=lYMOm3tySNI)
 * [Optimizations Enhance Just Cause 3 on Systems with Intel® Iris™ Graphics](https://software.intel.com/en-us/articles/optimizations-enhance-just-cause-3-on-systems-with-intel-iris-graphics)
+* [How Drifter Optimized & Delivered Robo Recall for Oculus Quest | Unreal Dev Days 2019](https://www.youtube.com/watch?v=o-6EMTjzvns)
 
 ## Hotspots and Bottlenecks
 
@@ -145,7 +143,7 @@ __Translucency__ is also very heavy for performance, never use translucency unle
 
 ### Lighting & Shadows
 
-Static lights are the fastest, dynamic lights are more costly. Try to __avoid__ lighting spheres or conuses to __overlap__ each other. __Reduce lights amount and cast distance__ as much as possible.
+Static lights are faster than dynamic lights, cull dynamic lights as early as possible, minimize the number of objects they affect. Spot lights are cheaper than the point lights. Try to __avoid__ lighting spheres or conuses to __overlap__ each other. __Reduce lights amount and cast distance__ as much as possible.
 
 > Bake as much lighting effects as possible. 
 
