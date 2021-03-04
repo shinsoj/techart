@@ -2,9 +2,7 @@
 
 > __Optimization__ is the process of maximizing of profitable characteristics, and minimizing costs.
 
-The goal of this article is to share some info about what causes performance issues, what are the most common problems and how to fix them.
-
-Watch this for the begining: [UE4 Performance and Profiling | Unreal Dev Day Montreal 2017 | Unreal Engine](https://www.youtube.com/watch?v=hcxetY8g_fs)
+The goal of this article is to share some info about common performance issues and how to fix them.
 
 
 # Profiling
@@ -25,6 +23,9 @@ Memory isn’t usually a bottleneck, but it can be. If you don’t have enough R
 
 ### Learn More
 
+* [UE4 Performance and Profiling | Unreal Dev Day Montreal 2017 | Unreal Engine](https://www.youtube.com/watch?v=hcxetY8g_fs)
+* [Performance Optimization for Environments | Inside Unreal 2020](https://www.youtube.com/watch?v=ZRaeiVAM4LI)
+* [How Drifter Optimized & Delivered Robo Recall for Oculus Quest | Unreal Dev Days 2019](https://www.youtube.com/watch?v=o-6EMTjzvns)
 * [Unreal Engine 4 Optimization Tutorial](https://software.intel.com/en-us/articles/unreal-engine-4-optimization-tutorial-part-1)
 * Intel GPA [guide](https://software.intel.com/en-us/articles/practical-game-performance-analysis-using-intel-graphics-performance-analyzers?elqTrackId=c1e06b59e39d48aaac871d9ad949f1ac&elqaid=20092&elqat=2)
 * [Optimizing DayZ with Intel GPA - Buzz Workshop Portland, OR](https://www.youtube.com/watch?v=xdGDzH6S7gc)
@@ -43,7 +44,6 @@ __Trade-Offs__
 2. Accuracy vs Speed
 3. Maintainability vs Complexity
 
-Trading performance against memory usage, for example caching. Saving expensive CPU computation using quick memory read.
 
 # FPS vs MS
 
