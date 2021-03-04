@@ -77,7 +77,7 @@ While the frames per second increase, the number of milliseconds decreases at a 
 10fps = 100ms
 ```
 
-__Example__: we have a scene running at 35fps - `1000/35 = 28.57ms`, let's say we want to use [HBAO+ Ultra](http://developer.download.nvidia.com/gameworks/events/GDC2016/atatarinov_alpanteleev_advanced_ao.pdf) that takes 4.8ms - `28.57 + 4.8 = 33.37ms`, that means our scene is now running at 30fps.
+__Example__: we have a scene running at 35fps - `1000/35 = 28.57ms`, let's say we want to use [HBAO+ Ultra](http://developer.download.nvidia.com/gameworks/events/GDC2016/atatarinov_alpanteleev_advanced_ao.pdf) which takes 4.8ms - `28.57 + 4.8 = 33.37ms`, that means our scene is now running at 30fps.
 
 ### Learn More
 
@@ -143,7 +143,7 @@ __Translucency__ is also very heavy for performance, never use translucency unle
 
 ### Lighting & Shadows
 
-Static lights are faster than dynamic lights, cull dynamic lights as early as possible, minimize the number of objects they affect. Spot lights are cheaper than the point lights. Try to __avoid__ lighting spheres or conuses to __overlap__ each other. __Reduce lights amount and cast distance__ as much as possible.
+Static lights are faster than dynamic lights, __cull dynamic lights as early as possible__, minimize the number of objects they affect. Spot lights are cheaper than the point lights. Try to __avoid__ lighting spheres or conuses to __overlap__ each other. __Reduce lights amount and cast distance__ as much as possible.
 
 > Bake as much lighting effects as possible. 
 
@@ -151,7 +151,7 @@ Lights can optionally cast __shadows__. This gives them greater realism but has 
 
 > Disable shadow casting where possible.
 
-Soft shadows have a greater rendering overhead than hard shadows but __this only affects the GPU and does not cause much extra CPU work__. [[6](https://www.construct.net/en/blogs/construct-official-blog-1/remember-not-waste-memory-796)]
+Soft shadows have a greater rendering overhead than hard shadows but __this only affects the GPU and does not cause much extra CPU work__. 
 
 
 ### Screen space effects
@@ -246,9 +246,7 @@ Textures impact the _bandwidth_ the most. There are ways to optimize them to inc
 
 ### Texture compression
 
-Popular compressed formats like PNG and JPG cannot be decoded directly by the GPU. Before images are loaded into memory they must first be converted to a format that can be quickly accessed by the GPU. This involves creating mip-maps and either compressing the image so it takes up less video memory or leaving it uncompressed. [11]
-
-A better option is to use hardware accelerated formats designed for the GPU. This means that they do not need to be decompressed before being copied and results in decreased loading times for the player and may even lead to increased performance due to hardware optimizations. [12]
+Popular compressed formats like PNG and JPG cannot be decoded directly by the GPU and have to be decompressed to the GPU friendly format.
 
 The formats designed for the GPU:
 
@@ -256,6 +254,12 @@ The formats designed for the GPU:
 * [ETC](https://en.wikipedia.org/wiki/Ericsson_Texture_Compression) - this one is for android and not supported by iOS
 * [PVRTC](https://en.wikipedia.org/wiki/PVRTC) - for iOS, but can also be used on android and PC
 * [ASTC](https://en.wikipedia.org/wiki/Adaptive_Scalable_Texture_Compression) - similar to DXT, but you can choose the size of blocks like 4 x 4 or 12 x 12. It ranges from 8 bpp to less than 1 bpp. 
+
+### Learn More
+
+* [Texture formats for 2D games, part 1](http://joostdevblog.blogspot.com/2015/11/texture-formats-for-2d-games-part-1.html)
+* [Texture formats for 2D games, part 3: DXT and PVRTC](http://joostdevblog.blogspot.com/2015/11/texture-formats-for-2d-games-part-3-dxt.html)
+* [Texture Compression Techniques](http://sv-journal.org/2014-1/06/en/index.php?lang=en)
 
 ### Texture size and bpp
 
@@ -277,7 +281,7 @@ As we have 2 values in 1 bit, then to calculate the rest we have - `2 in the pow
 24 bpp = 16,777,216 colors  // True Color
 ```
 
-> Color Depth, also known as _bit depth_, is either the number of bits used to indicate the color of a single pixel, or the number of bits used for each color component of a single pixel. When referring to a _pixel_, the concept can be defined as _bits per pixel_ (**bpp**), which specifies the number of bits used. When referring to a _color component_, the concept can be defined as _bits per component_, bits per channel, bits per color (all three abbreviated **bpc**) [20]
+> Color Depth, also known as _bit depth_, is either the number of bits used to indicate the color of a single pixel, or the number of bits used for each color component of a single pixel. When referring to a _pixel_, the concept can be defined as _bits per pixel_ (**bpp**), which specifies the number of bits used. When referring to a _color component_, the concept can be defined as _bits per component_, bits per channel, bits per color (all three abbreviated **bpc**) [[Wiki](https://en.wikipedia.org/wiki/Color_depth)]
 
 __RGB 24bit__ gives us 8 bits per channel (R8G8B8), but there's no alpha, by adding it, we get **RGBA 32bit** (R8G8B8A8). 
 
@@ -295,6 +299,9 @@ For example, we have 1k texture with 16 bits per pixel:
 
 That means our texture is going to take 2Mb of VRAM.
 
+### Learn More
+
+* [Remember not to waste your memory](https://www.construct.net/en/blogs/construct-official-blog-1/remember-not-waste-memory-796)
 
 ### BC1..3 (DXT1..5)
 
@@ -354,7 +361,7 @@ The relative costs of collision detection, from most expensive to least:
 > There are a few platforms that always use a specific type of compression, such as HEVAG for the PS Vita, XMA for XBox One, and AAC for WebGL. (quoted from Unity 2017 Game Optimization book)
 
 
-* Reduce the amount of the audio clips playing simulatinously to reduce the CPU load/
+* Reduce the amount of the audio clips playing simulatinously to reduce the CPU load
 * Force audio to mono if there's no need in stereo effect
 * Resample to lower frequencies
 
@@ -362,7 +369,7 @@ Streaming should be restricted to large files. Runtime hard disk acess is one of
 
 # Links
 
-1. [FPS vs msec/frame](http://renderingpipeline.com/2013/02/fps-vs-msecframe/)
+1. 
 2. [Optimization and profiling](https://castle-engine.io/manual_optimization.php)
 3. [GPU Performance for Game Artists](https://www.gamasutra.com/blogs/KeithOConor/20170705/301035/GPU_Performance_for_Game_Artists.php)
 4. [How bad are small triangles on GPU and why?](https://www.g-truc.net/post-0662.html)
@@ -380,7 +387,3 @@ Streaming should be restricted to large files. Runtime hard disk acess is one of
 16. [Remember not to waste your memory](https://www.construct.net/en/blogs/construct-official-blog-1/remember-not-waste-memory-796)
 17. [Chapter 28. Graphics Pipeline Performance](https://developer.download.nvidia.com/books/HTML/gpugems/gpugems_ch28.html)
 18. [Unite 2012 - Performance Optimization Tips and Tricks for Unity](https://www.youtube.com/watch?v=jZ4LL1LlqF8&feature=youtu.be&t=1254)
-19. [Texture formats for 2D games, part 1](http://joostdevblog.blogspot.com/2015/11/texture-formats-for-2d-games-part-1.html)
-20. [Texture formats for 2D games, part 3: DXT and PVRTC](http://joostdevblog.blogspot.com/2015/11/texture-formats-for-2d-games-part-3-dxt.html)
-21. [Color depth](https://en.wikipedia.org/wiki/Color_depth)
-22. [Texture Compression Techniques](http://sv-journal.org/2014-1/06/en/index.php?lang=en)
