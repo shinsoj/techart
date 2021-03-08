@@ -1,24 +1,29 @@
+## Useful links
+Here are some links at [Polycount](http://wiki.polycount.com/wiki/PBR)
+Allegorithmic PBR Guide [1](https://academy.substance3d.com/courses/the-pbr-guide-part-1) and [2](https://academy.substance3d.com/courses/the-pbr-guide-part-2)
+[Basics of PBR](https://www.youtube.com/watch?v=fePsD_8p9vM) by Ben Cloward
+[Video from SIGGRAPH](https://www.youtube.com/watch?v=j-A0mwsJRmk) 
+[Cubetutorials](https://www.youtube.com/watch?v=GVNnfZG4riw).
+
+
+Also make sure to check this [post by Harrison Eilers](https://www.artstation.com/harrisoneilers/blog/ADnb/011-pbr-validate-for-ue4) about PBR validating in UE4 with a simple post process material.
+
 # General PBR info
 
-There's a lot of info about this theme written already, so I wouldn't copy-paste it all, there are some [links at Polycount](http://wiki.polycount.com/wiki/PBR). Allegorithmic PBR Guide __[1](https://academy.substance3d.com/courses/the-pbr-guide-part-1)__
- and __[2](https://academy.substance3d.com/courses/the-pbr-guide-part-2)__
+A range for albedo \ diffuse color in sRGB is 50-240. That is critical. Do not set the value too dark, that's a common mistake, out of range values would not light correctly.
 
-And here's also a nice [video from SIGGRAPH](https://www.youtube.com/watch?v=j-A0mwsJRmk) and this real good quick explanation from [Cubetutorials](https://www.youtube.com/watch?v=GVNnfZG4riw).
+The __roughness__ texture controls the blurriness of the reflection. The rougher the surface, the blurrier the reflection. The roughness is the inverse of the __glossiness__. Sometimes glossiness and roughness are referred to as the __microsurface value__. It also has no technical constraints, this is completely artistical choice how to represent this map, would it be polished or aged or having fingerprints. The map is important for bringing realism to the material.
 
-Maps:
+__Metalness maps should use values of 0 or 1__. Dielectrics (non-metals) have a __0 metalness__ value. If they are part of an asset that needs one, the non-metal portions should be black. Metallic map properties should represent the top layer of the material, like painted metal, which would not be metallic in this case. Metals have a value of 1.
 
-* Albedo - _Base color_ with no lighting/shading data. Most albedo values exist within the midtones. (sRGB)
-* Normal - High-res surface detail used for faking the lighting of bumps and dents. (RGB)
-* Roughness - Defines reflective surface properties. (Grayscale)
-* Metallic - Determines if a material is a metal or not. Values are either completely black or white. (Grayscale)
-* Ambient Occlusion (AO) - used to calculate how exposed each point in a scene is to ambient lighting. (Grayscale)
-* Cavity - Micro ambient occlusion. (Grayscale)
-* Height - Surface elevation information. (Grayscale)
-* Opacity - Defines if the surface is opaque or transparent. (Grayscale)
+In Unreal Engine the __specular__ is a value between 0 and 1 and is used to scale the amount of specularity on non-metallic surfaces. __It has no effect on metals__. In most cases just let the value by default (0.5) which is good for 99% of the materials. Most of the materials reflect 4% of light, when looking strait at the surface. Specular value of 0.5 represents 4% reflection, that said, the specular range 0-1 represents 0-8%. Engine handles the fresnel effect, rising the reflectivity at the angles.
 
-The __roughness__ texture controls the blurriness of the reflection. The rougher the surface, the blurrier the reflection. The roughness is the inverse of the __glossiness__. Sometimes glossiness and roughness are referred to as the __microsurface value__. It also has no technical constraints, this is completely artistical choise how to represent this map, where it would be polished, smooth or aged.
+We can modify specular if we want some small scale shadowing, in this case we would apply a __cavity__ map on it. Here's a quote from UE4 docs:
+```
+For very diffuse Materials, you may be inclined to set this to zero. Resist! All Materials have specular, see this post for examples [[5]](https://docs.unrealengine.com/en-US/RenderingAndGraphics/Materials/PhysicallyBased/index.html#hable). What you really want to do for very diffuse Materials is make them rough.
+```
 
-Dielectrics (non-metals) have a `0` __metallness__ value and do not require a metallic map. If they are part of an asset that needs one, the non-metal portions should be black. Metallic map properties should represent the top layer of the material, like painted metal, which would not be metallic in this case. Metals have a value of `1`. _Base color becomes specular_ instead of diffuse. _Metal diffuse is black_.
+This also can be used to control IOR, for example, ice has specular value of 0.224, water - 0.255, skin - 0.35, glass or plastic - 0.5. More info in [UE4 documentation](https://docs.unrealengine.com/en-US/RenderingAndGraphics/Materials/PhysicallyBased/#specular).
 
 
 
@@ -111,11 +116,11 @@ With color picker you can see the albedo value, which in this case is `26%` for 
 
 # Albedo values
 
-Gathered from all around the web, they might be not 100% accurate, but more or less close.
+Gathered from all around the web, values are for the reference and general idea of how dark\light the common material usually is, there are always variations.
 
-For dielectric, the darkest albedo carbon has with 0.04 value, the lightest ones are the white paint and fresh snow with values around 0.8.
+For __dielectric__, the darkest albedo carbon has with __0.04__ value, the lightest ones are the white paint and fresh snow with values around __0.8 (inside 30-240 sRGB range)__. 
 
-Values are in __Linear RGB__ (float).
+__Values are in Linear RGB (float)__.
 
 ## Dielectric values
 
@@ -203,7 +208,7 @@ Values are in __Linear RGB__ (float).
 
 ## Metallic values
 
-Metals albedo values are between `0.5` and `0.98` (`180 sRGB` value and brighter). Lower values are for matte, higher are for polished metal.
+Metals albedo values are between `0.5` and `0.98` (__180-255 sRGB range__). Lower values are for matte, higher are for polished metal.
 
 These sRGB values are for the reference, may vary a little bit.
 
