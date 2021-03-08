@@ -22,7 +22,7 @@ In Unreal Engine the __specular__ is a value between 0 and 1 and is used to scal
 We can modify specular if we want some small scale shadowing, in this case we would apply a __cavity__ map on it. Here's a quote from UE4 docs:
 ```
 For very diffuse Materials, you may be inclined to set this to zero. Resist! 
-All Materials have specular, see this post for examples [[5]](https://docs.unrealengine.com/en-US/RenderingAndGraphics/Materials/PhysicallyBased/index.html#hable). 
+All Materials have specular, see this post for examples [5]. 
 What you really want to do for very diffuse Materials is make them rough.
 ```
 
