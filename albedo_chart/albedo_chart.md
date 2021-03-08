@@ -1,9 +1,10 @@
 ## Useful links
-Here are some links at [Polycount](http://wiki.polycount.com/wiki/PBR)
-Allegorithmic PBR Guide [1](https://academy.substance3d.com/courses/the-pbr-guide-part-1) and [2](https://academy.substance3d.com/courses/the-pbr-guide-part-2)
-[Basics of PBR](https://www.youtube.com/watch?v=fePsD_8p9vM) by Ben Cloward
-[Video from SIGGRAPH](https://www.youtube.com/watch?v=j-A0mwsJRmk) 
-[Cubetutorials](https://www.youtube.com/watch?v=GVNnfZG4riw).
+
+* Here are some links at [Polycount](http://wiki.polycount.com/wiki/PBR)
+* Allegorithmic PBR Guide [1](https://academy.substance3d.com/courses/the-pbr-guide-part-1) and [2](https://academy.substance3d.com/courses/the-pbr-guide-part-2)
+* [Basics of PBR](https://www.youtube.com/watch?v=fePsD_8p9vM) by Ben Cloward
+* [Video from SIGGRAPH](https://www.youtube.com/watch?v=j-A0mwsJRmk) 
+* [Cubetutorials](https://www.youtube.com/watch?v=GVNnfZG4riw).
 
 
 Also make sure to check this [post by Harrison Eilers](https://www.artstation.com/harrisoneilers/blog/ADnb/011-pbr-validate-for-ue4) about PBR validating in UE4 with a simple post process material.
@@ -20,7 +21,9 @@ In Unreal Engine the __specular__ is a value between 0 and 1 and is used to scal
 
 We can modify specular if we want some small scale shadowing, in this case we would apply a __cavity__ map on it. Here's a quote from UE4 docs:
 ```
-For very diffuse Materials, you may be inclined to set this to zero. Resist! All Materials have specular, see this post for examples [[5]](https://docs.unrealengine.com/en-US/RenderingAndGraphics/Materials/PhysicallyBased/index.html#hable). What you really want to do for very diffuse Materials is make them rough.
+For very diffuse Materials, you may be inclined to set this to zero. Resist! 
+All Materials have specular, see this post for examples [[5]](https://docs.unrealengine.com/en-US/RenderingAndGraphics/Materials/PhysicallyBased/index.html#hable). 
+What you really want to do for very diffuse Materials is make them rough.
 ```
 
 This also can be used to control IOR, for example, ice has specular value of 0.224, water - 0.255, skin - 0.35, glass or plastic - 0.5. More info in [UE4 documentation](https://docs.unrealengine.com/en-US/RenderingAndGraphics/Materials/PhysicallyBased/#specular).
