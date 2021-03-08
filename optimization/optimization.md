@@ -177,13 +177,13 @@ high-performance, open-source filter for images rendered with ray tracing.
 
 # DIP
 
-CPU is often limited by the number of batches that need to be rendered. `[5]`
+CPU is often limited by the number of batches that need to be rendered. [[5]](https://docs.unity3d.com/Manual/OptimizingGraphicsPerformance.html)
 
 > Dip - DrawIndexedPrimitives. DrawElements in OpenGL
 
-Draw call commands are given by CPU to GPU, to render a mesh. The command only points to a mesh which shall be rendered and doesn’t contain any material information. After the command is given, the GPU takes the render state values (material, textures, shaders etc…) and all the vertex data to convert this information into pixels on your screen. `[13]`
+Draw call commands are given by CPU to GPU, to render a mesh. The command only points to a mesh which shall be rendered and doesn’t contain any material information. After the command is given, the GPU takes the render state values (material, textures, shaders etc…) and all the vertex data to convert this information into pixels on your screen. [[13]](http://www.theappguruz.com/blog/learn-draw-call-reduction-and-make-your-games-run-superfast)
 
-> Every mesh with a different material will require a separate Draw Call. `[13]`
+> Every mesh with a different material will require a separate Draw Call. [[13]](http://www.theappguruz.com/blog/learn-draw-call-reduction-and-make-your-games-run-superfast)
 
 Reducing Draw Calls will reduce overhead for the GPU and clearing up CPU usage for other processing.
 
@@ -197,7 +197,7 @@ The main reason to make fewer draw calls is that GPUs can transform and render t
 
 Try to keep the number of UV mapping seams and hard edges (doubled-up vertices) as low as possible.
 
-Note that the actual number of vertices that graphics hardware has to process is usually not the same as the number reported by a 3D application. Modeling applications usually display the number of distinct corner points that make up a model (known as the geometric vertex count). For a graphics card, however, some geometric vertices need to be split into two or more logical vertices for rendering purposes. A vertex must be split if it has multiple normals, UV coordinates or vertex colors. `[8]`
+Note that the actual number of vertices that graphics hardware has to process is usually not the same as the number reported by a 3D application. Modeling applications usually display the number of distinct corner points that make up a model (known as the geometric vertex count). For a graphics card, however, some geometric vertices need to be split into two or more logical vertices for rendering purposes. A vertex must be split if it has multiple normals, UV coordinates or vertex colors. [[5]](https://docs.unity3d.com/560/Documentation/Manual/OptimizingGraphicsPerformance.html)
 
 > Do not make too many too trivial shapes.
 
@@ -209,7 +209,7 @@ BUT:
 
 This one is explained above in the culling section.
 
-Each shape is passed as a whole, and shapes may be culled. By using only a few very large shapes, you make this **culling worthless**. (In most cases you would not want to combine all the telephone poles into a single model, because then the renderer couldn't cull the unseen meshes, so ALL the triangles would have to be loaded.) `[2]`
+Each shape is passed as a whole, and shapes may be culled. By using only a few very large shapes, you make this **culling worthless**. (In most cases you would not want to combine all the telephone poles into a single model, because then the renderer couldn't cull the unseen meshes, so ALL the triangles would have to be loaded.) [[2]](https://castle-engine.io/manual_optimization.php)
 
 > Draw calls often have a more significant impact on performance than polycount.
 
