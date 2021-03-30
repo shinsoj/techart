@@ -18,8 +18,6 @@ Turn down all your graphical settings and/or set your resolution as low as possi
 
 [Identify Basic GPU/CPU Bound Scenarios](https://software.intel.com/en-us/gpa-cookbook-identify-basic-gpu-cpu-bound-scenarios)
 
-Memory isn’t usually a bottleneck, but it can be. If you don’t have enough RAM, that can cause problems.
-
 
 ### Learn More
 
@@ -143,7 +141,7 @@ __Translucency__ is also very heavy for performance, never use translucency unle
 
 ### Lighting & Shadows
 
-Static lights are faster than dynamic lights, __cull dynamic lights as early as possible__, minimize the number of objects they affect. Spot lights are cheaper than the point lights. Try to __avoid__ lighting spheres or conuses to __overlap__ each other. __Reduce lights amount and cast distance__ as much as possible.
+Static lights are faster than dynamic lights, __cull dynamic lights as early as possible__, minimize the number of objects they affect. Spot lights are cheaper than the point lights. __One point light costs as much as 6 spot lights__. Try to __avoid__ lighting spheres or conuses to __overlap__ each other. __Reduce lights amount and cast distance__ as much as possible.
 
 > Bake as much lighting effects as possible. 
 
