@@ -14,8 +14,6 @@ The goal of this article is to share some info about common performance issues a
 
 ## CPU or GPU bound?
 
-Turn down all your graphical settings and/or set your resolution as low as possible. If that does not change your framerate, or does just a little, then your CPU is the bottleneck, othervise the GPU is.
-
 [Identify Basic GPU/CPU Bound Scenarios](https://software.intel.com/en-us/gpa-cookbook-identify-basic-gpu-cpu-bound-scenarios)
 
 
@@ -32,16 +30,6 @@ Turn down all your graphical settings and/or set your resolution as low as possi
 * [How Drifter Optimized & Delivered Robo Recall for Oculus Quest | Unreal Dev Days 2019](https://www.youtube.com/watch?v=o-6EMTjzvns)
 
 ## Hotspots and Bottlenecks
-
-Hotspots are the small fractions of code that have major performance impact.
-
-Bottlenecks
-
-__Trade-Offs__
-1. Performance vs Space
-2. Accuracy vs Speed
-3. Maintainability vs Complexity
-
 
 # FPS vs MS
 
