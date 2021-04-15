@@ -135,6 +135,8 @@ Static lights are faster than dynamic lights, __cull dynamic lights as early as 
 
 Lights can optionally cast __shadows__. This gives them greater realism but has a __bigger performance cost__. Lights and realtime shadows have a big impact on performance, these effects give extra draw calls for the CPU and extra processing on the GPU. Also, shadow maps resolution has a moderate performance cost.
 
+As mentioned earlier, triangle count is rarely a problem. __But it matters for shadow casting__, adding the processing costs to that.
+
 > Disable shadow casting where possible.
 
 Soft shadows have a greater rendering overhead than hard shadows but __this only affects the GPU and does not cause much extra CPU work__. 
