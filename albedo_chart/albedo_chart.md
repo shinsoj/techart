@@ -11,7 +11,7 @@ Also make sure to check this [post by Harrison Eilers](https://www.artstation.co
 
 # General PBR info
 
-A range for albedo \ diffuse color in sRGB is 50-240. That is critical. Do not set the value too dark, that's a common mistake, out of range values would not light correctly.
+__A range for albedo \ diffuse color in sRGB is 60-240.__ That is critical. Do not set the value too dark, that's a common mistake, out of range values would not light correctly.
 
 The __roughness__ texture controls the blurriness of the reflection. The rougher the surface, the blurrier the reflection. The roughness is the inverse of the __glossiness__. Sometimes glossiness and roughness are referred to as the __microsurface value__. It also has no technical constraints, this is completely artistical choice how to represent this map, would it be polished or aged or having fingerprints. The map is important for bringing realism to the material.
 
@@ -121,7 +121,7 @@ With color picker you can see the albedo value, which in this case is `26%` for 
 
 Gathered from all around the web, values are for the reference and general idea of how dark\light the common material usually is, there are always variations.
 
-For __dielectric__, the darkest albedo carbon has with __0.04__ value, the lightest ones are the white paint and fresh snow with values around __0.8 (inside 30-240 sRGB range)__. 
+For __dielectric__, the darkest albedo carbon has with __0.04__ value, the lightest ones are the white paint and fresh snow with values around __0.8 (inside 60-240 sRGB range)__. 
 
 __Values are in Linear RGB (float)__.
 
@@ -211,7 +211,7 @@ __Values are in Linear RGB (float)__.
 
 ## Metallic values
 
-Metals albedo values are between `0.5` and `0.98` (__180-255 sRGB range__). Lower values are for matte, higher are for polished metal.
+Metals albedo values are between `0.5` and `0.98` (__180-250 sRGB range__). Lower values are for matte, higher are for polished metal.
 
 These sRGB values are for the reference, may vary a little bit.
 
