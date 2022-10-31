@@ -59,7 +59,7 @@ For example, color-pick:
 
 ![example](https://github.com/shinsoj/techart/blob/master/albedo_chart/img/01.jpg)
 
-And calculate, for this example we have `0.27` albedo value (with some error):
+And calculate using the formula. For this example we have `0.27` albedo value (with some error):
 ```
 ((0/255)^2.2 + (168/255)^2.2 + (170/255)^2.2) / 3 = 0.27
 ```
@@ -67,41 +67,49 @@ And calculate, for this example we have `0.27` albedo value (with some error):
 > To avoid doing any calculations, you can check the value in Photoshop and Substance Designer.
 
 
-## How to check albedo value in Substance Designer
-
-Use this Function that converts sRGB to Linear:
-
-![example](https://github.com/shinsoj/techart/blob/master/albedo_chart/img/08.jpg)
-
-This function is used inside the __Pixel Processor__ node which samples the input and converts each channel separately:
-
-![example](https://github.com/shinsoj/techart/blob/master/albedo_chart/img/09.jpg)
-
-Pointing at the color with cursor in 2D view you can see it's value in float. For our example color we did before, it's `0.262745`:
-
-![example](https://github.com/shinsoj/techart/blob/master/albedo_chart/img/04.jpg)
-
-
 ## How to check albedo value in Photoshop
 
-Add __Exposure correction__ layer with __Gamma Correction__ set to `0.4545`:
+Simple way of checking texture value would be Luminosity in Histogram. Basically keep the textures in between the 80-240 range, roughly, the darkest albedo should be no less than 50-60 (I prefer keeping 55-60 as black surface):
+
+![example](https://github.com/shinsoj/techart/blob/master/albedo_chart/img/luminosity.png)
+
+If you want to convert sRGB color to linear space and see the linear albedo values, you can do this in a few steps:
+
+1 - Add __Exposure correction__ layer with __Gamma Correction__ set to `0.4545`:
 
 ![example](https://github.com/shinsoj/techart/blob/master/albedo_chart/img/05.jpg)
 
-Then, add __Channel Mixer__ layer, check the __Monochrome__ box and set all channels to `33%`
+2 - Then, add __Channel Mixer__ layer, check the __Monochrome__ box and set all channels to `33%`
 
 ![example](https://github.com/shinsoj/techart/blob/master/albedo_chart/img/06.jpg)
 
-With color picker you can see the albedo value, which in this case is `26%` for our example above:
+3 - With color picker you can now see the albedo value, which in this case is `26%`:
 
 ![example](https://github.com/shinsoj/techart/blob/master/albedo_chart/img/07.jpg)
+
+
+## How to check albedo value in Substance Designer
+
+It's easy to create a node for Albedo values validation:
+
+1 - This Function converts sRGB to Linear:
+
+![example](https://github.com/shinsoj/techart/blob/master/albedo_chart/img/08.jpg)
+
+2 - The function is used inside the __Pixel Processor__ node which samples the input and converts each channel separately:
+
+![example](https://github.com/shinsoj/techart/blob/master/albedo_chart/img/09.jpg)
+
+3 - In 2D View, pointing at the color with cursor, you can see it's value in float. In this case it's `0.26`:
+
+![example](https://github.com/shinsoj/techart/blob/master/albedo_chart/img/04.jpg)
 
 
 # Albedo values
 
 Gathered from all around the web, values are for the reference and general idea of how dark\light the common material usually is.
 
-For __NonMetals__, the darkest albedo is carbon with __0.04__ value, the brightest are the white paint and fresh snow with values around __0.8 (inside 60-240 sRGB range)__. 
+For __NonMetals__, the darkest albedo value is __0.04__ for carbon, the brightest are the white paint and fresh snow with values around __0.8__. That gives us 60-240 sRGB range. 
 
 __Values are in Linear RGB (float)__.
 
@@ -191,9 +199,9 @@ __Values are in Linear RGB (float)__.
 
 ## Metal values
 
-Metals albedo values are between `0.45` - `0.98` (__180-250 sRGB range__). Lower values are for matte, higher are for polished metal.
+Metals have range of 180-255 sRGB. Rougher the metal - darker the albedo, if Metallic has values lower than 0.8, not clearly metal, then the Base Color should be darker than it would be for pure metal.
 
-These sRGB values are for the reference, don't take them for granted.
+These sRGB values are for the reference.
 
 * Iron  = `c4c7c7` (198, 198, 200)
 * Brass = `d6b97b` (214, 185, 123)
@@ -210,13 +218,4 @@ These sRGB values are for the reference, don't take them for granted.
 * Mercury = `e5e4e4` (229, 228, 228)
 * Palladium = `ded9d3` (222, 217, 211)
 
-# Useful links
 
-* Here are some links at [Polycount](http://wiki.polycount.com/wiki/PBR)
-* Allegorithmic PBR Guide [1](https://academy.substance3d.com/courses/the-pbr-guide-part-1) and [2](https://academy.substance3d.com/courses/the-pbr-guide-part-2)
-* [Basics of PBR](https://www.youtube.com/watch?v=fePsD_8p9vM) by Ben Cloward
-* [Video from SIGGRAPH](https://www.youtube.com/watch?v=j-A0mwsJRmk) 
-* [Cubetutorials](https://www.youtube.com/watch?v=GVNnfZG4riw).
-
-
-Also make sure to check this [post by Harrison Eilers](https://www.artstation.com/harrisoneilers/blog/ADnb/011-pbr-validate-for-ue4) about PBR validating in UE4 with a simple post process material.
