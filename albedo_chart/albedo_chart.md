@@ -1,3 +1,27 @@
+# PBR General
+
+## Albedo \ Base Color
+
+__A range for albedo \ diffuse color for non-metals is 60-240 sRGB.__ Do not set the value too dark, that's a common mistake, out of range values would not give enough of GI, breaking the lighting.
+
+Metals need to have a reflectance range of 70-100% in the Base Color, that means that metals have range of 180-255 sRGB. Rougher the metal - darker the albedo, if Metallic has values lower than 0.8, not clearly metal, then the Base Color should be darker than it would be for pure metal.
+
+## Roughness \ Glossiness
+
+The __roughness__ texture controls the blurriness of the reflection. The rougher the surface, the blurrier the reflection. The roughness is the inverse of the __glossiness__. It has no technical constraints, this is completely artistical choice on how to represent this map, would it be polished or aged or having fingerprints, it is important for bringing realism to the material.
+
+## Metalness
+
+__Metallic maps use values of 0 - 1__, where metals are 1. Metallic map properties should represent the top layer of the material, for example dirty or painted metal which would not be metallic in this case.
+
+## Specular
+
+In Unreal Engine the __specular__ is a value that represents reflectiveness of a non-metal surface in the range of 0-8% (0.0-0.08), remapped to 0.0-1.0, where 0.5 = 4% reflective. Most non-metals have specular value between 2-5%, __it has no effect on metals__. Most of the materials reflect 4% of light, when looking strait at the surface, so just leave this value at default 0.5, that works for 99% of the materials. All Materials have specular, so it can't be 0 for physically correct surface.
+
+We can modify specular if we want some small scale shadowing, in this case we would apply a __cavity__ map on it.
+
+More info in [UE4 documentation](https://docs.unrealengine.com/en-US/RenderingAndGraphics/Materials/PhysicallyBased/#specular).
+
 
 # Color space conversions
 
