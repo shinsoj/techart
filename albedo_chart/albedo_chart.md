@@ -144,6 +144,10 @@ __Values are in Linear RGB (float)__.
 | Grain crops | `0.10` – `0.25` |
 | Summer foliage | `0.09` – `0.12` |
 | Conifer Forest | `0.08` – `0.12` |
+| __Wood__ | |
+| Batten (fresh wood) | `0.35` – `0.42` |
+| Batten (old, weathered) | `0.12` – `0.16` |
+| Varnished wood | `0.13` |
 | __Snow, ice, water__ | |
 | Fresh snow | `0.7` – `0.9` |
 | Melting snow (clean) | `0.6` – `0.62` |
@@ -167,10 +171,6 @@ __Values are in Linear RGB (float)__.
 | New concrete | `0.4` – `0.55` |
 | Polished concrete | `0.55` |
 | Aged concrete | `0.2` – `0.3` |
-| __Wood__ | |
-| Batten (fresh wood) | `0.35` – `0.42` |
-| Batten (old, weathered) | `0.12` – `0.16` |
-| Varnished wood | `0.13` |
 | __Tiles, bricks, finishings, etc__ | |
 | Alabaster | `0.92` |
 | White gypsum | `0.85` |
