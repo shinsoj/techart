@@ -115,107 +115,103 @@ __Values are in Linear RGB (float)__.
 
 ## NonMetal values
 
-### Ground, sand, rock
-* Carbon (Coal, forged iron) `0.04`
-* Black soil, wet `0.08`
-* Black soil, dry `0.15`
-* Bare soil `0.17`
-* Grey soil, wet `0.10` – `0.12`
-* Grey soil, dry `0.25` – `0.30`
-* Dry silt loam soil `0.23` – `0.28`
-* Dry clay soil `0.15` – `0.35`
-* Dry sandy soil `0.25` – `0.45`
-* Dry salt cover `0.5`
-* Wet sand `0.23`
-* Dry sand `0.4`
-* Yellow clay `0.16`
-* Rock `0.3` – `0.4`
 
-### Vegetation
-* Conifer Forest `0.08` – `0.12`
-* Deciduous trees `0.15` – `0.18`
-* Tall wild grass `0.16` – `0.18`
-* Short green grass `0.20` – `0.25`
-* Grain crops `0.10` – `0.25`
-* Corn field `0.16` – `0.17`
-* Tea bushes `0.16` – `0.18`
-* Summer foliage `0.09` – `0.12`
-* Autumn foliage `0.15` – `0.3`
-* Tundra `0.2`
-
-### Snow, ice, water
-* Melting snow (clean) `0.6` – `0.62`
-* Ice `0.5` – `0.7`
-* Ice, sea `0.3` – `0.45`
-* Ice, glacier `0.2` – `0.4`
-* Fresh snow `0.7` – `0.9`
-* Water, sun near zenith `0.05`
-* Water, sun near horizon `0.5` - `0.8`
-
-### Asphalt
-* New asphalt `0.04` – `0.05`
-* Aged asphalt `0.1` – `0.18`
-* Wet asphalt `0.06` – `0.08`
-* Gravel `0.13`
-
-### Roofs
-* Tar & gravel `0.33`
-* Corrugated roof `0.1` – `0.15`
-* Red/Brown roof tiles `0.1` – `0.35`
-* White asphalt shingle `0.2`
-
-### Concrete
-* Aged concrete `0.2` – `0.3`
-* New concrete (traditional) `0.4` – `0.55`
-* Polished concrete `0.55`
-* New concrete with white portland cement `0.7` – `0.8`
-
-### Wood
-* Batten (fresh wood) `0.35` – `0.42`
-* Batten (old, weathered) `0.12` – `0.16`
-* Varnished wood `0.13`
-
-### Tiles, bricks, finishings, etc
-* Terracotta tile `0.28`
-* Brick `0.2` – `0.4`
-* Sandstone `0.18`
-* Plaster `0.4` – `0.45`
-* Magnesium oxide `0.96`
-* White gypsum `0.85`
-* Alabaster `0.92`
-* Granite gray `0.35` – `0.40`
-
-### Paint
-* Black acrylic paint `0.05`
-* White acrylic paint `0.8`
-* Colored paint `0.15` – `0.35`
-
-### Misc
-* Forged Iron `0.04`
-* Natural silk fabric `0.35` – `0.55`
-* Skin `0.25` – `0.35`
-* White paper sheet `0.6` – `0.7`
+| Surface | Albedo Linear |
+|---|---|
+| __Ground, sand, rock__ | |
+| Dry salt cover | `0.5` |
+| Dry sand | `0.4` |
+| Rock | `0.3` – `0.4` |
+| Dry sandy soil | `0.25` – `0.45` |
+| Grey soil, dry | `0.25` – `0.30` |
+| Dry silt loam soil | `0.23` – `0.28` |
+| Wet Sand | `0.23` |
+| Dry clay soil | `0.15` – `0.35` |
+| Bare soil | `0.17` |
+| Yellow clay | `0.16` |
+| Black soil, dry | `0.15` |
+| Grey soil, wet | `0.10` – `0.12` |
+| Black soil, wet | `0.08` |
+| Carbon (Coal, forged iron) | `0.04` |
+| __Vegetation__ | |
+| Short green grass | `0.20` – `0.25` |
+| Tundra | `0.2` |
+| Tall wild grass | `0.16` – `0.18` |
+| Tea bushes | `0.16` – `0.18` |
+| Corn field | `0.16` – `0.17` |
+| Deciduous trees | `0.15` – `0.18` |
+| Autumn foliage | `0.15` – `0.3` |
+| Grain crops | `0.10` – `0.25` |
+| Summer foliage | `0.09` – `0.12` |
+| Conifer Forest | `0.08` – `0.12` |
+| __Snow, ice, water__ | |
+| Fresh snow | `0.7` – `0.9` |
+| Melting snow (clean) | `0.6` – `0.62` |
+| Ice | `0.5` – `0.7` |
+| Ice, sea | `0.3` – `0.45` |
+| Ice, glacier | `0.2` – `0.4` |
+| Water, sun near horizon | `0.5` - `0.8` |
+| Water, sun near zenith | `0.05` |
+| __Asphalt__ | |
+| Gravel | `0.13` |
+| Aged asphalt | `0.1` – `0.18` |
+| Wet asphalt | `0.06` – `0.08` |
+| New asphalt | `0.04` – `0.05` |
+| __Roofs__ | |
+| Tar & gravel | `0.33` |
+| White asphalt shingle | `0.2` |
+| Red/Brown roof tiles | `0.1` – `0.35` |
+| Corrugated roof | `0.1` – `0.15` |
+| __Concrete__ | |
+| New concrete with white portland cement | `0.7` – `0.8` |
+| New concrete | `0.4` – `0.55` |
+| Polished concrete | `0.55` |
+| Aged concrete | `0.2` – `0.3` |
+| __Wood__ | |
+| Batten (fresh wood) | `0.35` – `0.42` |
+| Batten (old, weathered) | `0.12` – `0.16` |
+| Varnished wood | `0.13` |
+| __Tiles, bricks, finishings, etc__ | |
+| Alabaster | `0.92` |
+| White gypsum | `0.85` |
+| Plaster | `0.4` – `0.45` |
+| Granite gray | `0.35` – `0.40` |
+| Terracotta tile | `0.28` |
+| Brick | `0.2` – `0.4` |
+| Sandstone | `0.18` |
+| __Paint__ | |
+| White paint | `0.8` |
+| Colored paint | `0.15` – `0.35` |
+| Black paint | `0.05` |
+| __Misc__ | |
+| Magnesium oxide | `0.96` |
+| White paper sheet | `0.6` – `0.7` |
+| Natural silk fabric | `0.35` – `0.55` |
+| Skin | `0.25` – `0.35` |
+| Forged Iron | `0.04` |
 
 
 ## Metal values
 
 Metals have range of 180-255 sRGB. Rougher the metal - darker the albedo, if Metallic has values lower than 0.8, not clearly metal, then the Base Color should be darker than it would be for pure metal.
 
-These sRGB values are for the reference.
+These __sRGB values__ are for the reference.
 
-* Iron  = `c4c7c7` (198, 198, 200)
-* Brass = `d6b97b` (214, 185, 123)
-* Copper = `fad0c0` (250, 208, 192)
-* Gold = `ffe29b` (255, 226, 155)
-* Aluminum = `f5f6f6` (245, 246, 246)
-* Chrome = `c4c5c5` (196, 197, 197)
-* Silver = `fcfaf5` (252, 250, 245)
-* Cobalt = `d3d2cf` (211, 210, 207)
-* Titanium = `c1bab1` (195, 186, 177)
-* Platinum = `d5d0c8` (213, 208, 200)
-* Nickel = `d3cbbe` (211, 203, 190)
-* Zinc = `d5eaed` (213, 234, 237)
-* Mercury = `e5e4e4` (229, 228, 228)
-* Palladium = `ded9d3` (222, 217, 211)
+| Metal | Hex | RGB |
+| --- | --- | --- |
+| Iron  | `c4c7c7` | (198, 198, 200) |
+| Brass | `d6b97b` | (214, 185, 123) |
+| Copper | `fad0c0` | (250, 208, 192) |
+| Gold | `ffe29b` | (255, 226, 155) |
+| Aluminum | `f5f6f6` | (245, 246, 246) |
+| Chrome | `c4c5c5` | (196, 197, 197) |
+| Silver | `fcfaf5` | (252, 250, 245) |
+| Cobalt | `d3d2cf` | (211, 210, 207) |
+| Titanium | `c1bab1` | (195, 186, 177) |
+| Platinum | `d5d0c8` | (213, 208, 200) |
+| Nickel | `d3cbbe` | (211, 203, 190) |
+| Zinc | `d5eaed` | (213, 234, 237) |
+| Mercury | `e5e4e4` | (229, 228, 228) |
+| Palladium | `ded9d3` | (222, 217, 211) |
 
 
