@@ -132,7 +132,7 @@ __Values are in Linear RGB (float)__.
 | Black soil, dry | `0.15` | 108 |
 | Grey soil, wet | `0.10` – `0.12` | 90 - 97 |
 | Black soil, wet | `0.08` | 81 |
-| Carbon (Coal, forged iron) | `0.04` | 60 |
+| Carbon (Coal, forged iron) | `0.04` | 59 |
 | __Vegetation__ | | |
 | Short green grass | `0.20` – `0.25` | 123 - 136 |
 | Tundra | `0.2` | 123 |
