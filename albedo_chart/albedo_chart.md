@@ -115,80 +115,88 @@ __Values are in Linear RGB (float)__.
 
 ## NonMetal values
 
-
 | Surface | Albedo Linear | sRGB |
 |---|---|---|
 | __Ground, sand, rock__ | | |
-| Dry salt cover | `0.5` | 186 |
-| Dry sand | `0.4` | 168 |
-| Rock | `0.3` – `0.4` | 148 - 168 |
-| Dry sandy soil | `0.25` – `0.45` | 136 - 177 |
-| Grey soil, dry | `0.25` – `0.30` | 136 - 148 |
-| Dry silt loam soil | `0.23` – `0.28` | 131 - 143 |
-| Wet Sand | `0.23` | 131 |
-| Dry clay soil | `0.15` – `0.35` | 108 - 158 |
-| Bare soil | `0.17` | 114 |
-| Yellow clay | `0.16` | 111 |
-| Black soil, dry | `0.15` | 108 |
-| Grey soil, wet | `0.10` – `0.12` | 90 - 97 |
-| Black soil, wet | `0.08` | 81 |
-| Carbon (Coal, forged iron) | `0.04` | 59 |
-| __Vegetation__ | | |
-| Short green grass | `0.20` – `0.25` | 123 - 136 |
-| Tundra | `0.2` | 123 |
-| Tall wild grass | `0.16` – `0.18` | 111 - 117 |
-| Tea bushes | `0.16` – `0.18` | 111 - 117 |
-| Corn field | `0.16` – `0.17` | 111 - 114 |
-| Deciduous trees | `0.15` – `0.18` | 108 - 117 |
-| Autumn foliage | `0.15` – `0.3` | 109 - 148 |
-| Grain crops | `0.10` – `0.25` | 90 - 136 |
-| Summer foliage | `0.09` – `0.12` | 85 |
-| Conifer Forest | `0.08` – `0.12` | 81 |
+| Dry salt cover | `0.5` | `186` |
+| Dry sand | `0.4` | `168` |
+| Rock | `0.3` - `0.4` | `148` - `168` |
+| Limestone | `0.3` - `0.45` | `148` - `177` |
+| Dry sandy soil | `0.25` - `0.45` | `136` - `177` |
+| Grey soil, dry | `0.25` - `0.30` | `136` - `148` |
+| Dry silt loam soil | `0.23` - `0.28` | `131` - `143` |
+| Wet Sand | `0.23` | `131` |
+| Dry clay soil | `0.15` - `0.35` | `108` - `158` |
+| Bare soil | `0.17` | `114` |
+| Yellow clay | `0.16` | `111` |
+| Black soil, dry | `0.15` | `108` |
+| Grey soil, wet | `0.10` - `0.12` | `90` - `97` |
+| Black soil, wet | `0.08` | `81` |
+| Carbon (Coal, forged iron) | `0.04` | `60` |
+| __Vegetation, leaves__ | | |
+| Short green grass | `0.20` - `0.25` | `123` - `136` |
+| Tundra | `0.2` | `123` |
+| Tall wild grass | `0.16` - `0.18` | `111` - `117` |
+| Tea bushes | `0.16` - `0.18` | `111` - `117` |
+| Corn field | `0.16` - `0.17` | `111` - `114` |
+| Deciduous trees | `0.15` - `0.18` | `108` - `117` |
+| Autumn foliage | `0.15` - `0.3` | `109` - `148` |
+| Grain crops | `0.10` - `0.25` | `90` - `136` |
+| Moss | `0.1` | `90` |
+| Summer foliage | `0.09` - `0.12` | `85` |
+| Conifer Forest | `0.08` - `0.12` | `81` |
+| Dry Leafs, (wet - dry) | `0.07` - `0.2` | `75` - `123` |
 | __Wood__ | | |
-| Batten (fresh wood) | `0.35` – `0.42` | 158 - 172 |
-| Batten (old, weathered) | `0.12` – `0.16` | 97 - 111 |
-| Varnished wood | `0.13` | 101 |
+| Batten, planks (fresh wood) | `0.35` - `0.42` | `158` - `172` |
+| Batten, planks (old, weathered) | `0.12` - `0.16` | `97` - `111` |
+| Varnished wood | `0.13` | `101` |
+| Bark, oak | `0.1` | `90` |
 | __Snow, ice, water__ | |
-| Fresh snow | `0.7` – `0.9` | 217 - 243 |
-| Melting snow (clean) | `0.6` – `0.62` | 202 - 205 |
-| Ice | `0.5` – `0.7` | 186 - 217 |
-| Ice, sea | `0.3` – `0.45` | 148 - 177 |
-| Ice, glacier | `0.2` – `0.4` | 123 - 168 |
-| Water, sun near horizon | `0.5` - `0.8` | 186 - 230 |
-| Water, sun near zenith | `0.05` | 65 |
+| Fresh snow | `0.7` - `0.9` | `217` - `243` |
+| Melting snow (clean) | `0.6` - `0.62` | `202` - `205` |
+| Ice | `0.5` - `0.7` | `186` - `217` |
+| Ice, sea | `0.3` - `0.45` | `148` - `177` |
+| Ice, glacier | `0.2` - `0.4` | `123` - `168` |
+| Water, sun near horizon | `0.5` - `0.8` | `186` - `230` |
+| Water, sun near zenith | `0.05` | `65` |
 | __Asphalt__ | | |
-| Gravel | `0.13` |
-| Aged asphalt | `0.10` – `0.18` | 90 - 117 |
-| Wet asphalt | `0.06` – `0.08` | 71 - 81 |
-| New asphalt | `0.04` – `0.05` | 59 - 65 |
+| Aged asphalt | `0.10` - `0.18` | `90` - `117` |
+| Wet asphalt | `0.06` - `0.08` | `71` - `81` |
+| New asphalt | `0.04` - `0.05` | `59` - `65` |
 | __Roofs__ | | |
-| Tar & gravel | `0.33` | 154 |
-| White asphalt shingle | `0.2` | 123 |
-| Red/Brown roof tiles | `0.1` – `0.35` | 90 - 158 |
-| Corrugated roof | `0.1` – `0.15` | 90 - 108 |
+| Tar & gravel | `0.33` | `154` |
+| White asphalt shingle | `0.2` | `123` |
+| Red/Brown roof tiles | `0.1` - `0.35` | `90` - `158` |
+| Corrugated roof | `0.1` - `0.15` | `90` - `108` |
 | __Concrete__ | | |
-| New concrete with white portland cement | `0.7` – `0.8` | 217 - 230 |
-| New concrete | `0.40` – `0.55` | 168 - 194 |
-| Polished concrete | `0.55` | 194 |
-| Aged concrete | `0.2` – `0.3` | 123 - 148 |
+| New concrete with white portland cement | `0.7` - `0.8` | `217` - `230` |
+| New concrete | `0.40` - `0.55` | `168` - `194` |
+| Polished concrete | `0.55` | `194` |
+| Aged concrete | `0.2` - `0.3` | `123` - `148` |
 | __Tiles, bricks, finishings, etc__ | | |
-| Alabaster | `0.92` | 246 |
-| White gypsum | `0.85` | 237 |
-| Plaster | `0.40` – `0.45` | 168 - 177 |
-| Granite gray | `0.35` – `0.40` | 158 - 168 |
-| Terracotta tile | `0.28` | 143 |
-| Brick | `0.2` – `0.4` | 123 - 168 |
-| Sandstone | `0.18` | 117 |
+| Alabaster | `0.92` | `246` |
+| White gypsum | `0.85` | `237` |
+| Plaster | `0.40` - `0.45` | `168` - `177` |
+| Granite gray | `0.35` - `0.40` | `158` - `168` |
+| Brick, light | `0.3` - `0.5` | `148` - `186` |
+| Terracotta tile | `0.28` | `143` |
+| Brick, red | `0.2` - `0.4` | `123` - `168` |
+| Sandstone | `0.18` | `117` |
 | __Paint__ | | |
-| White paint | `0.8` | 230 |
-| Colored paint | `0.15` – `0.35` | 108 - 158 |
-| Black paint | `0.05` | 65 |
+| White paint | `0.8` | `230` |
+| Colored paint | `0.15` - `0.35` | `108` - `158` |
+| Black paint | `0.05` - `0.15` | `65` - `108` |
 | __Misc__ | | |
-| Magnesium oxide | `0.96` | 250 |
-| White paper sheet | `0.6` – `0.7` | 202 - 217 | 
-| Natural silk fabric | `0.35` – `0.55` | 158 - 194 |
-| Skin | `0.25` – `0.35` | 136 - 158 |
-| Forged Iron | `0.04` | 59 |
+| Magnesium oxide | `0.96` | `250` |
+| White paper sheet | `0.6` - `0.7` | `202` - `217` | 
+| Natural silk fabric | `0.35` - `0.55` | `158` - `194` |
+| Rust | `0.05` - `0.09` | `65` - `85` |
+| Forged Iron | `0.04` | `59` |
+| __Skin__ | | |
+| Skin, European | `0.35` - `0.6` | `158` - `202` |
+| Skin, Indian | `0.15` - `0.3` | `108` - `148` |
+| Skin, African | `0.05` - `0.15` | `65` - `108` |
+
 
 ## Metal values
 
