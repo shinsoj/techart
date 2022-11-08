@@ -39,7 +39,7 @@ If (0 ≤ L ≤ 0.0031308):
 Else (0.0031308 < L ≤ 1):
 	S = 1.055*L^(1/2.4) - 0.055
 ```
-The formulas below are simplified approximations of converting _sRGB to Linear and the reverse_, which should give good enough results in most cases (it gives larger relative errors in darker regions but that's where the eyes are less sensitive):
+The formulas below are simplified approximations of converting _sRGB to Linear and back_, which should give good enough results in most cases (it gives larger relative errors in darker regions but that's where the eyes are less sensitive):
 ```
 Linear = ((sRGB / 255) ^ 2.2) * 255
 sRGB = ((Linear / 255) ^ 0.4545) * 255
@@ -111,13 +111,13 @@ Gathered from all around the web, values are for the reference and general idea 
 
 For __NonMetals__, the darkest albedo value is __0.04__ for carbon, the brightest are the white paint and fresh snow with values around __0.8__. That gives us 60-240 sRGB range. 
 
-__Values are in Linear RGB (float)__.
-
 ## NonMetal values
+
+Values are represented as __Linear RGB | sRGB__.
 
 | Surface | Albedo Linear | sRGB |
 |---|---|---|
-| __Ground, sand, rock__ | | |
+| __# Ground, sand, rock__ | | |
 | Salt cover, dry | `0.5` | `186` |
 | Rock | `0.3` - `0.4` | `148` - `168` |
 | Limestone | `0.3` - `0.45` | `148` - `177` |
@@ -130,7 +130,7 @@ __Values are in Linear RGB (float)__.
 | Grey soil, wet - dry | `0.10` - `0.30` | `90` - `148` |
 | Black soil, wet - dry | `0.08` - `0.15` | `81` - `108` |
 | Carbon (Coal, forged iron) | `0.04` | `60` |
-| __Vegetation, leaves__ | | |
+| __# Vegetation, leaves__ | | |
 | Short green grass | `0.20` - `0.25` | `123` - `136` |
 | Tundra | `0.2` | `123` |
 | Tall wild grass | `0.16` - `0.18` | `111` - `117` |
@@ -142,8 +142,8 @@ __Values are in Linear RGB (float)__.
 | Moss | `0.1` | `90` |
 | Summer foliage | `0.09` - `0.12` | `85` |
 | Conifer Forest | `0.08` - `0.12` | `81` |
-| Dry Leafs, (wet - dry) | `0.07` - `0.2` | `75` - `123` |
-| __Wood__ | | |
+| Leaves, (wet - dry) | `0.07` - `0.2` | `75` - `123` |
+| __# Wood__ | | |
 | Batten, planks (fresh wood) | `0.35` - `0.42` | `158` - `172` |
 | Batten, planks (old, weathered) | `0.12` - `0.16` | `97` - `111` |
 | Varnished wood | `0.13` | `101` |
@@ -156,21 +156,17 @@ __Values are in Linear RGB (float)__.
 | Ice, glacier | `0.2` - `0.4` | `123` - `168` |
 | Water, sun near horizon | `0.5` - `0.8` | `186` - `230` |
 | Water, sun near zenith | `0.05` | `65` |
-| __Asphalt__ | | |
-| Aged asphalt | `0.10` - `0.18` | `90` - `117` |
-| Wet asphalt | `0.06` - `0.08` | `71` - `81` |
-| New asphalt | `0.04` - `0.05` | `59` - `65` |
-| __Roofs__ | | |
+| __# Roofs__ | | |
 | Tar & gravel | `0.33` | `154` |
 | White asphalt shingle | `0.2` | `123` |
 | Red/Brown roof tiles | `0.1` - `0.35` | `90` - `158` |
 | Corrugated roof | `0.1` - `0.15` | `90` - `108` |
-| __Concrete__ | | |
+| __# Concrete__ | | |
 | New concrete with white portland cement | `0.7` - `0.8` | `217` - `230` |
 | New concrete | `0.40` - `0.55` | `168` - `194` |
 | Polished concrete | `0.55` | `194` |
 | Aged concrete | `0.2` - `0.3` | `123` - `148` |
-| __Tiles, bricks, finishings, etc__ | | |
+| __# Tiles, bricks, finishings, etc__ | | |
 | Alabaster | `0.92` | `246` |
 | White gypsum | `0.85` | `237` |
 | Plaster | `0.40` - `0.45` | `168` - `177` |
@@ -179,17 +175,21 @@ __Values are in Linear RGB (float)__.
 | Terracotta tile | `0.28` | `143` |
 | Brick, red | `0.2` - `0.4` | `123` - `168` |
 | Sandstone | `0.18` | `117` |
-| __Paint__ | | |
+| __# Asphalt__ | | |
+| Aged asphalt | `0.10` - `0.18` | `90` - `117` |
+| Wet asphalt | `0.06` - `0.08` | `71` - `81` |
+| New asphalt | `0.04` - `0.05` | `59` - `65` |
+| __# Paint__ | | |
 | White paint | `0.8` | `230` |
 | Colored paint | `0.15` - `0.35` | `108` - `158` |
 | Black paint | `0.05` - `0.15` | `65` - `108` |
-| __Misc__ | | |
+| __# Misc__ | | |
 | Magnesium oxide | `0.96` | `250` |
 | White paper sheet | `0.6` - `0.7` | `202` - `217` | 
 | Natural silk fabric | `0.35` - `0.55` | `158` - `194` |
 | Rust | `0.05` - `0.09` | `65` - `85` |
 | Forged Iron | `0.04` | `59` |
-| __Skin__ | | |
+| __# Skin__ | | |
 | Skin, European | `0.35` - `0.6` | `158` - `202` |
 | Skin, Indian | `0.15` - `0.3` | `108` - `148` |
 | Skin, African | `0.05` - `0.15` | `65` - `108` |
