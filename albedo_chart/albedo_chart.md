@@ -118,20 +118,17 @@ __Values are in Linear RGB (float)__.
 | Surface | Albedo Linear | sRGB |
 |---|---|---|
 | __Ground, sand, rock__ | | |
-| Dry salt cover | `0.5` | `186` |
-| Dry sand | `0.4` | `168` |
+| Salt cover, dry | `0.5` | `186` |
 | Rock | `0.3` - `0.4` | `148` - `168` |
 | Limestone | `0.3` - `0.45` | `148` - `177` |
-| Dry sandy soil | `0.25` - `0.45` | `136` - `177` |
-| Grey soil, dry | `0.25` - `0.30` | `136` - `148` |
-| Dry silt loam soil | `0.23` - `0.28` | `131` - `143` |
-| Wet Sand | `0.23` | `131` |
-| Dry clay soil | `0.15` - `0.35` | `108` - `158` |
+| Sandy soil, dry | `0.25` - `0.45` | `136` - `177` |
+| Silt loam soil, dry | `0.23` - `0.28` | `131` - `143` |
+| Sand, wet - dry | `0.23` - `0.4` | `131` - `168` |
+| Clay soil, dry | `0.15` - `0.35` | `108` - `158` |
 | Bare soil | `0.17` | `114` |
 | Yellow clay | `0.16` | `111` |
-| Black soil, dry | `0.15` | `108` |
-| Grey soil, wet | `0.10` - `0.12` | `90` - `97` |
-| Black soil, wet | `0.08` | `81` |
+| Grey soil, wet - dry | `0.10` - `0.30` | `90` - `148` |
+| Black soil, wet - dry | `0.08` - `0.15` | `81` - `108` |
 | Carbon (Coal, forged iron) | `0.04` | `60` |
 | __Vegetation, leaves__ | | |
 | Short green grass | `0.20` - `0.25` | `123` - `136` |
