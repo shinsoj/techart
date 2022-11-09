@@ -197,9 +197,9 @@ Values are represented as __Linear RGB | sRGB__.
 
 ## Metal values
 
-Metals have range of 180-255 sRGB. Rougher the metal - darker the albedo, if Metallic has values lower than 0.8, not clearly metal, then the Base Color should be darker than it would be for pure metal.
+Albedo values for metals range from 0.5 to 0.98 (180 to 250 sRGB). Lower values represent matte metal and higher values represent polished metal.
 
-These __sRGB values__ are for the reference.
+Values are displayed in __sRGB__. These are for reference only and may vary.
 
 | Metal | Hex | RGB |
 | --- | --- | --- |
